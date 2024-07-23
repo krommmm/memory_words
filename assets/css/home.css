@@ -119,7 +119,7 @@ h1 {
     height: 8px;
     border-radius: 10px;
     background-color: red;
-    transition-duration: .8s;
+    transition-duration: 3s;
     transition-timing-function: linear;
     z-index: 2;
 }
