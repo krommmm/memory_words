@@ -43,7 +43,9 @@ export class Controller {
             this.faill();
             if (this.wrong === true) {
                 this.continues();
+                return;
             }
+            
             this.addCardInWrongList(e);
         } else if (e.target.classList.contains("btn-yes")) {
             this.success();
@@ -103,6 +105,14 @@ export class Controller {
         audio.src = "/assets/files/faill_sound.wav";
         audio.play();
     }
+    pass() {
+        const heartBeat = "https://universal-soundbank.com/sounds/350.mp3";
+        const magneto = "https://universal-soundbank.com/sounds/3802.mp3";
+        const clacquement = "https://universal-soundbank.com/sounds/2166.mp3";
+        const audio = new Audio();
+        audio.src = clacquement;
+        audio.play();
+    }
 
     initCards() {
         this.progressBar();
@@ -127,15 +137,13 @@ export class Controller {
         } else {
             document.querySelector(".word").textContent = this.list.list.find(card => parseInt(card.id) === parseInt(id)).ukName;
         }
+        this.pass();
     }
 
     continues() {
         document.querySelector(".modalAnswer").style.display = "none";
         const kindOfArray = this.all ? this.list.list : this.wrongList.wrongList;
-        // console.log(`Array : ${kindOfArray.length}`);
-        // console.log(`Cpt : ${this.cpt}`);
         if (kindOfArray.length - 1 <= this.cpt) {
-
             this.wrong = false;
             this.all = false;
             document.querySelector(".cardsContainer").style.display = "none";
