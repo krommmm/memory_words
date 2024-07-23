@@ -1,0 +1,33 @@
+.btn {
+    background-color: #5F78AB;
+    border: 1px solid #888888;
+    border-top-color: rgb(136, 136, 136);
+    border-right-color: rgb(136, 136, 136);
+    border-bottom-color: rgb(136, 136, 136);
+    border-left-color: rgb(136, 136, 136);
+    border-color: #26446E #152F5F #0C2253;
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 #3E5A88;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 6px 4px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+
+.btn:active {
+    transform: scale(.8);
+}
+
+.modal {
+    transform: translateY(-200px);
+    transition-duration: .4s;
+    border: 1px solid black;
+    padding: 15px;
+    width: 400px;
+    margin: auto;
+    background-color: white;
+}

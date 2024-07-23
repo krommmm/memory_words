@@ -1,0 +1,59 @@
+.cardsContainer {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.rightToLeft{
+    animation-name:rightToLeft;
+    animation-duration:.8s;
+}
+@keyframes rightToLeft{
+    0%{
+        opacity:0%;
+        transform:translateX(200px);
+    }
+    100%{
+        opacity:100%;
+        transform:translateX(0px);
+    }
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 9px;
+    margin: 14px;
+    cursor: pointer;
+}
+
+.modalAnswer {
+    display:none;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.btnAnswer {
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+    width: 200px;
+    text-align:center;
+}
+
+.btn-no {
+    border: 1px solid red;
+    background-color: rgb(236, 97, 97);
+}
+
+.btn-yes {
+    border: 1px solid green;
+    background-color: rgb(83, 139, 83);
+}
