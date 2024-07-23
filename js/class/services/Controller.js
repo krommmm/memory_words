@@ -76,7 +76,6 @@ export class Controller {
         } else if (e.target.classList.contains("ukFr")) {
             this.isReversed = true;
         } else if (e.target.classList.contains("btn-next")) {
-            this.next();
             this.continues();
         } else if (e.target.classList.contains("deleteWrong")) {
             this.deleteWrongCard(e);
@@ -138,12 +137,7 @@ export class Controller {
         audio.src = clacquement;
         audio.play();
     }
-    next() {
-        const heartBeat = "https://universal-soundbank.com/sounds/350.mp3";
-        const audio = new Audio();
-        audio.src = heartBeat;
-        audio.play();
-    }
+
 
     initCards() {
         this.progressBar();
