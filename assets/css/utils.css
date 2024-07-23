@@ -31,6 +31,7 @@
     margin: auto;
     background-color: white;
     z-index: 9999;
+    position: relative;
 }
 .modal input{
     padding-left: 10px;
