@@ -28,7 +28,9 @@ export class Controller {
             this.addCard(e);
         } else if (e.target.classList.contains("array-all")) {
             this.modalUI.close("modal");
+            document.querySelector(".modalAnswer").style.display = "none";
             document.querySelector(".cardsContainer").style.display = "none";
+            document.querySelector(".modalAnswerWrong").style.display = "none";
             this.cpt = 0;
             this.all = true;
             this.wrong = false;
@@ -38,7 +40,11 @@ export class Controller {
             this.initCards();
         } else if (e.target.classList.contains("card")) {
             this.translate(e);
-            document.querySelector(".modalAnswer").style.display = "flex";
+            if (this.all) {
+                document.querySelector(".modalAnswer").style.display = "flex";
+            } else if (this.wrong) {
+                document.querySelector(".modalAnswerWrong").style.display = "flex";
+            }
         } else if (e.target.classList.contains("btn-no")) {
             this.faill();
             if (this.wrong === true) {
@@ -52,21 +58,36 @@ export class Controller {
             this.continues(e);
         } else if (e.target.classList.contains("array-wrong")) {
             this.modalUI.close("modal");
+            document.querySelector(".modalAnswer").style.display = "none";
             document.querySelector(".cardsContainer").style.display = "none";
+            document.querySelector(".modalAnswerWrong").style.display = "none";
             this.cpt = 0;
             this.wrong = true;
             this.all = false;
             if (this.wrongList.wrongList.length <= 0) { return; }
             this.initCards();
         } else if (e.target.classList.contains("resetWrongArray")) {
-            localStorage.removeItem("wrongWords");
-            this.wrongList.wrongList = [];
+            this.resetWrongArray();
         } else if (e.target.classList.contains("delete")) {
             this.deleteCard(e);
+            this.continues();
         } else if (e.target.classList.contains("frUk")) {
             this.isReversed = false;
         } else if (e.target.classList.contains("ukFr")) {
             this.isReversed = true;
+        } else if (e.target.classList.contains("btn-next")) {
+            this.next();
+            this.continues();
+        } else if (e.target.classList.contains("deleteWrong")) {
+            this.deleteWrongCard(e);
+            this.continues();
+        }
+    }
+
+    resetWrongArray() {
+        if (confirm("Are you sure that you want to delete the wrong array.")) {
+            localStorage.removeItem("wrongWords");
+            this.wrongList.wrongList = [];
         }
     }
 
@@ -74,6 +95,11 @@ export class Controller {
         const container = e.target.closest(".cardsContainer");
         const id = container.dataset.id;
         this.list.deleteWord(id);
+    }
+    deleteWrongCard(e) {
+        const container = e.target.closest(".cardsContainer");
+        const id = container.dataset.id;
+        this.wrongList.deleteWord(id);
     }
 
     mixWordsRandomly() {
@@ -84,9 +110,7 @@ export class Controller {
             }
             return array;
         }
-
         const array = this.all ? this.list.list : this.wrongList.wrongList;
-
         if (this.all) {
             this.list.list = shuffle(array);
         } else {
@@ -105,12 +129,19 @@ export class Controller {
         audio.src = "/assets/files/faill_sound.wav";
         audio.play();
     }
+
     pass() {
         const heartBeat = "https://universal-soundbank.com/sounds/350.mp3";
         const magneto = "https://universal-soundbank.com/sounds/3802.mp3";
         const clacquement = "https://universal-soundbank.com/sounds/2166.mp3";
         const audio = new Audio();
         audio.src = clacquement;
+        audio.play();
+    }
+    next() {
+        const heartBeat = "https://universal-soundbank.com/sounds/350.mp3";
+        const audio = new Audio();
+        audio.src = heartBeat;
         audio.play();
     }
 
@@ -142,6 +173,7 @@ export class Controller {
 
     continues() {
         document.querySelector(".modalAnswer").style.display = "none";
+        document.querySelector(".modalAnswerWrong").style.display = "none";
         const kindOfArray = this.all ? this.list.list : this.wrongList.wrongList;
         if (kindOfArray.length - 1 <= this.cpt) {
             this.wrong = false;

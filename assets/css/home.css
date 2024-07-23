@@ -80,8 +80,9 @@ h1 {
 h2 {
     margin: 14px 0px;
 }
-.send-word{
-    margin-top:15px;
+
+.send-word {
+    margin-top: 15px;
 }
 
 .btn-yes {
@@ -89,10 +90,28 @@ h2 {
     background-color: rgb(83, 139, 83);
 }
 
-.delete {
+.delete,
+.deleteWrong {
     width: 40px;
     cursor: pointer;
     margin-left: 15px;
+}
+
+.modalAnswerWrong {
+    display: none;
+    padding: 15px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(239, 239, 244);
+    margin-top: 50px;
+    border: 1px solid #c0c0ea;
+}
+
+.btn-next {
+    border: 1px solid #0785f5;
+    background-color: #3bbfff;
+    margin-right: 15px;
 }
 
 .modalAnswer>p {
