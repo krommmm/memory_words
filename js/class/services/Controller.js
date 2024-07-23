@@ -43,10 +43,10 @@ export class Controller {
             this.faill();
             if (this.wrong === true) {
                 this.continues();
-                return;
+            } else {
+                this.addCardInWrongList(e);
             }
-            
-            this.addCardInWrongList(e);
+
         } else if (e.target.classList.contains("btn-yes")) {
             this.success();
             this.continues(e);
@@ -80,7 +80,7 @@ export class Controller {
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]]; // Échange des éléments
+                [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
         }
