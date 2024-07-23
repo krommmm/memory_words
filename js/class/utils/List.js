@@ -13,7 +13,8 @@ export class List extends IList {
     }
 
     deleteWord(cardId) {
-        this.list = this.list.filter(card => card.id !== cardId)
+        this.list = this.list.filter(card => parseInt(card.id) !== parseInt(cardId));
+        localStorage.setItem("allWords",JSON.stringify(this.list)); 
     }
 
 }

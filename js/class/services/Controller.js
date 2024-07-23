@@ -8,6 +8,7 @@ export class Controller {
         this.cpt = 0;
         this.all = false;
         this.wrong = false;
+        this.isReversed = false;
     }
 
     init() {
@@ -26,6 +27,7 @@ export class Controller {
         } else if (e.target.classList.contains("send-word")) {
             this.addCard(e);
         } else if (e.target.classList.contains("array-all")) {
+            this.modalUI.close("modal");
             document.querySelector(".cardsContainer").style.display = "none";
             this.cpt = 0;
             this.all = true;
@@ -47,6 +49,7 @@ export class Controller {
             this.success();
             this.continues(e);
         } else if (e.target.classList.contains("array-wrong")) {
+            this.modalUI.close("modal");
             document.querySelector(".cardsContainer").style.display = "none";
             this.cpt = 0;
             this.wrong = true;
@@ -56,7 +59,19 @@ export class Controller {
         } else if (e.target.classList.contains("resetWrongArray")) {
             localStorage.removeItem("wrongWords");
             this.wrongList.wrongList = [];
+        } else if (e.target.classList.contains("delete")) {
+            this.deleteCard(e);
+        } else if (e.target.classList.contains("frUk")) {
+            this.isReversed = false;
+        } else if (e.target.classList.contains("ukFr")) {
+            this.isReversed = true;
         }
+    }
+
+    deleteCard(e) {
+        const container = e.target.closest(".cardsContainer");
+        const id = container.dataset.id;
+        this.list.deleteWord(id);
     }
 
     mixWordsRandomly() {
@@ -90,18 +105,28 @@ export class Controller {
     }
 
     initCards() {
+        this.progressBar();
         const kindOfArray = this.all ? this.list.list : this.wrongList.wrongList;
         document.querySelector(".cardsContainer").classList.add("rightToLeft");
         const cardContainer = document.querySelector(".cardsContainer");
         cardContainer.setAttribute("data-id", kindOfArray[this.cpt].id);
         document.querySelector(".cardsContainer").style.display = "flex";
-        document.querySelector(".word").textContent = kindOfArray[this.cpt].frName;
+        if (this.isReversed) {
+            document.querySelector(".word").textContent = kindOfArray[this.cpt].ukName;
+        } else {
+            document.querySelector(".word").textContent = kindOfArray[this.cpt].frName;
+        }
+
     }
 
     translate(e) {
         document.querySelector(".cardsContainer").classList.remove("rightToLeft");
         let id = e.target.closest(".cardsContainer").dataset.id;
-        document.querySelector(".word").textContent = this.list.list.find(card => parseInt(card.id) === parseInt(id)).ukName;
+        if (this.isReversed) {
+            document.querySelector(".word").textContent = this.list.list.find(card => parseInt(card.id) === parseInt(id)).frName;
+        } else {
+            document.querySelector(".word").textContent = this.list.list.find(card => parseInt(card.id) === parseInt(id)).ukName;
+        }
     }
 
     continues() {
@@ -110,7 +135,7 @@ export class Controller {
         // console.log(`Array : ${kindOfArray.length}`);
         // console.log(`Cpt : ${this.cpt}`);
         if (kindOfArray.length - 1 <= this.cpt) {
-            alert("finished");
+
             this.wrong = false;
             this.all = false;
             document.querySelector(".cardsContainer").style.display = "none";
@@ -120,10 +145,37 @@ export class Controller {
         this.initCards();
     }
 
+    progressBar() {
+        document.querySelector(".compteur").textContent = `${this.cpt + 1} / ${this.list.list.length}`;
+        let bar = document.querySelector(".box__progressBar");
+        let percentils = document.querySelector(".box__percentils");
+        bar.style.width = "0%";
+
+        const baseLeft = this.cpt + 1;
+        const baseRight = this.list.list.length;
+
+        const multiplicateur = 100 / baseRight;
+        const finalLeft = baseLeft * multiplicateur;
+
+        percentils.textContent = `${finalLeft.toFixed(2)}%`;
+        percentils.style.transform = `translateX(${4 * finalLeft}px) translateY(-150%)`;
+        bar.style.width = `${finalLeft}%`;
+
+    }
+
+    checkIf2CardsAreSame(currentEnglishWord) {
+        return this.list.list.some((card) => card.ukName === currentEnglishWord);
+    }
     addCard(e) {
         const wordsContainer = e.target.closest(".addingWordsModal");
         const frWord = wordsContainer.querySelector(".frWord");
         const ukWord = wordsContainer.querySelector(".ukWord");
+
+        const doesThisWordAlreadyExists = this.checkIf2CardsAreSame(ukWord.value);
+        if (doesThisWordAlreadyExists) {
+            alert("You can't push this english word in the array since it's already in.");
+            return;
+        }
 
         const card = {
             id: this.id,
