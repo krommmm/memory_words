@@ -4,18 +4,21 @@
     flex-direction: column;
     align-items: center;
 }
-.rightToLeft{
-    animation-name:rightToLeft;
-    animation-duration:.8s;
+
+.rightToLeft {
+    animation-name: rightToLeft;
+    animation-duration: .8s;
 }
-@keyframes rightToLeft{
-    0%{
-        opacity:0%;
-        transform:translateX(200px);
+
+@keyframes rightToLeft {
+    0% {
+        opacity: 0%;
+        transform: translateX(200px);
     }
-    100%{
-        opacity:100%;
-        transform:translateX(0px);
+
+    100% {
+        opacity: 100%;
+        transform: translateX(0px);
     }
 }
 
@@ -29,10 +32,16 @@
     border-radius: 9px;
     margin: 14px;
     cursor: pointer;
+    text-align: center;
+}
+
+.word {
+    max-width: 90%;
+    text-align: center;
 }
 
 .modalAnswer {
-    display:none;
+    display: none;
     padding: 15px;
     justify-content: center;
     align-items: center;
@@ -45,12 +54,19 @@
     border-radius: 5px;
     margin-left: 5px;
     width: 200px;
-    text-align:center;
+    text-align: center;
 }
 
 .btn-no {
     border: 1px solid red;
     background-color: rgb(236, 97, 97);
+}
+
+h1 {
+    font-weight: 600;
+    color: rgb(122, 119, 111);
+    font-size: 15px;
+    margin-bottom: 30px;
 }
 
 .btn-yes {

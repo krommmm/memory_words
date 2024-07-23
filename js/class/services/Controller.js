@@ -31,16 +31,20 @@ export class Controller {
             this.all = true;
             this.wrong = false;
             if (this.list.list.length <= 0) { return; }
+
+            this.mixWordsRandomly();
             this.initCards();
         } else if (e.target.classList.contains("card")) {
             this.translate(e);
             document.querySelector(".modalAnswer").style.display = "flex";
         } else if (e.target.classList.contains("btn-no")) {
+            this.faill();
             if (this.wrong === true) {
                 this.continues();
             }
             this.addCardInWrongList(e);
         } else if (e.target.classList.contains("btn-yes")) {
+            this.success();
             this.continues(e);
         } else if (e.target.classList.contains("array-wrong")) {
             document.querySelector(".cardsContainer").style.display = "none";
@@ -49,10 +53,40 @@ export class Controller {
             this.all = false;
             if (this.wrongList.wrongList.length <= 0) { return; }
             this.initCards();
-        }else if(e.target.classList.contains("resetWrongArray")){
+        } else if (e.target.classList.contains("resetWrongArray")) {
             localStorage.removeItem("wrongWords");
             this.wrongList.wrongList = [];
         }
+    }
+
+    mixWordsRandomly() {
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Échange des éléments
+            }
+            return array;
+        }
+
+        const array = this.all ? this.list.list : this.wrongList.wrongList;
+
+        if (this.all) {
+            this.list.list = shuffle(array);
+        } else {
+            this.wrongList.wrongList = shuffle(array)
+        }
+    }
+
+    success() {
+        const audio = new Audio();
+        audio.src = "/assets/files/success_sound.wav";
+        audio.play();
+    }
+
+    faill() {
+        const audio = new Audio();
+        audio.src = "/assets/files/faill_sound.wav";
+        audio.play();
     }
 
     initCards() {
@@ -99,7 +133,7 @@ export class Controller {
         this.list.addWord(card);
 
         this.id++;
-        localStorage.setItem("id-words",JSON.stringify(this.id));
+        localStorage.setItem("id-words", JSON.stringify(this.id));
         this.modalUI.cleanInputs();
         this.modalUI.close("modal");
     }
