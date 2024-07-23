@@ -184,4 +184,8 @@ h2 {
         z-index: 999999999999;
         position: relative;
     }
+
+    body .modal {
+        left: 8%;
+    }
 }
