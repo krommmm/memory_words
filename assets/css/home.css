@@ -162,7 +162,7 @@ h2 {
 
 @media screen and (max-width:735px) {
     body .btnAnswer {
-        width: 35px;
+        width: 44px;
     }
 
     body .delete,
@@ -173,6 +173,9 @@ h2 {
     body .modalAnswer {
         margin-top: 25px;
         width: 90%;
+    }
+    body .btn-next{
+        width: auto;
     }
 
     body .box {
