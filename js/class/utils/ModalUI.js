@@ -10,7 +10,7 @@ export class ModalUI extends IModal {
     }
 
     close(selector) {
-        document.querySelector(`.${selector}`).style.transform = "translateY(-300px)";
+        document.querySelector(`.${selector}`).style.transform = "translateY(-616px)";
     }
 
     cleanInputs() {

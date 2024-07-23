@@ -193,7 +193,12 @@ export class Controller {
             const finalLeft = baseLeft * multiplicateur;
 
             percentils.textContent = `${finalLeft.toFixed(2)}%`;
-            percentils.style.transform = `translateX(${4 * finalLeft}px) translateY(-150%)`;
+            const widthBody = document.body.clientWidth;
+            let nb = 4;
+            if (widthBody <= 735) {
+                nb = 2;
+            }
+            percentils.style.transform = `translateX(${nb * finalLeft}px) translateY(-150%)`;
             bar.style.width = `${finalLeft}%`;
         } else {
             document.querySelector(".compteur").textContent = `${this.cpt + 1} / ${this.wrongList.wrongList.length}`;

@@ -3,6 +3,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
 }
 
 .rightToLeft {
@@ -157,4 +158,30 @@ h2 {
     transform: translateY(-150%);
     z-index: 2;
     font-size: 12px;
+}
+
+@media screen and (max-width:735px) {
+    body .btnAnswer {
+        width: 35px;
+    }
+
+    body .delete,
+    body .deleteWrong {
+        width: 30px;
+    }
+
+    body .modalAnswer {
+        margin-top: 25px;
+        width: 90%;
+    }
+
+    body .box {
+        width: 200px;
+    }
+
+    body header {
+        flex-direction: column;
+        z-index: 999999999999;
+        position: relative;
+    }
 }

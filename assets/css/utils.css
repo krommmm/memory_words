@@ -23,7 +23,7 @@
 }
 
 .modal {
-    transform: translateY(-300px);
+    transform: translateY(-616px);
     transition-duration: .4s;
     border: 1px solid black;
     padding: 20px;
@@ -31,7 +31,9 @@
     margin: auto;
     background-color: white;
     z-index: 9999;
-    position: relative;
+    position: absolute;
+    top:200px;
+    left: 40%;
 }
 .modal input{
     padding-left: 10px;
