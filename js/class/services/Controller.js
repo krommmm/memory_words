@@ -146,20 +146,37 @@ export class Controller {
     }
 
     progressBar() {
-        document.querySelector(".compteur").textContent = `${this.cpt + 1} / ${this.list.list.length}`;
-        let bar = document.querySelector(".box__progressBar");
-        let percentils = document.querySelector(".box__percentils");
-        bar.style.width = "0%";
+        if (this.all) {
+            document.querySelector(".compteur").textContent = `${this.cpt + 1} / ${this.list.list.length}`;
+            let bar = document.querySelector(".box__progressBar");
+            let percentils = document.querySelector(".box__percentils");
+            bar.style.width = "0%";
 
-        const baseLeft = this.cpt + 1;
-        const baseRight = this.list.list.length;
+            const baseLeft = this.cpt + 1;
+            const baseRight = this.list.list.length;
 
-        const multiplicateur = 100 / baseRight;
-        const finalLeft = baseLeft * multiplicateur;
+            const multiplicateur = 100 / baseRight;
+            const finalLeft = baseLeft * multiplicateur;
 
-        percentils.textContent = `${finalLeft.toFixed(2)}%`;
-        percentils.style.transform = `translateX(${4 * finalLeft}px) translateY(-150%)`;
-        bar.style.width = `${finalLeft}%`;
+            percentils.textContent = `${finalLeft.toFixed(2)}%`;
+            percentils.style.transform = `translateX(${4 * finalLeft}px) translateY(-150%)`;
+            bar.style.width = `${finalLeft}%`;
+        } else {
+            document.querySelector(".compteur").textContent = `${this.cpt + 1} / ${this.wrongList.wrongList.length}`;
+            let bar = document.querySelector(".box__progressBar");
+            let percentils = document.querySelector(".box__percentils");
+            bar.style.width = "0%";
+
+            const baseLeft = this.cpt + 1;
+            const baseRight = this.wrongList.wrongList.length;
+
+            const multiplicateur = 100 / baseRight;
+            const finalLeft = baseLeft * multiplicateur;
+
+            percentils.textContent = `${finalLeft.toFixed(2)}%`;
+            percentils.style.transform = `translateX(${4 * finalLeft}px) translateY(-150%)`;
+            bar.style.width = `${finalLeft}%`;
+        }
 
     }
 
