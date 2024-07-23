@@ -77,6 +77,13 @@ h1 {
     margin-bottom: 30px;
 }
 
+h2 {
+    margin: 14px 0px;
+}
+.send-word{
+    margin-top:15px;
+}
+
 .btn-yes {
     border: 1px solid green;
     background-color: rgb(83, 139, 83);

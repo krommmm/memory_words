@@ -23,11 +23,15 @@
 }
 
 .modal {
-    transform: translateY(-200px);
+    transform: translateY(-300px);
     transition-duration: .4s;
     border: 1px solid black;
-    padding: 15px;
+    padding: 20px;
     width: 400px;
     margin: auto;
     background-color: white;
+    z-index: 9999;
+}
+.modal input{
+    padding-left: 10px;
 }
