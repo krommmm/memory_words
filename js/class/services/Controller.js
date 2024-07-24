@@ -91,14 +91,18 @@ export class Controller {
     }
 
     deleteCard(e) {
-        const container = e.target.closest(".cardsContainer");
-        const id = container.dataset.id;
-        this.list.deleteWord(id);
+        if (confirm("Would you like delete this word")) {
+            const container = e.target.closest(".cardsContainer");
+            const id = container.dataset.id;
+            this.list.deleteWord(id);
+        }
     }
     deleteWrongCard(e) {
-        const container = e.target.closest(".cardsContainer");
-        const id = container.dataset.id;
-        this.wrongList.deleteWord(id);
+        if (confirm("Would you like delete this word")) {
+            const container = e.target.closest(".cardsContainer");
+            const id = container.dataset.id;
+            this.wrongList.deleteWord(id);
+        }
     }
 
     mixWordsRandomly() {
