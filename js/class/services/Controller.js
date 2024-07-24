@@ -129,7 +129,7 @@ export class Controller {
 
     faill() {
         const audio = new Audio();
-        audio.src = "/assets/files/faill_sound.wav";
+        audio.src = "/assets/files/chewbacca.swf";
         audio.play();
     }
 
