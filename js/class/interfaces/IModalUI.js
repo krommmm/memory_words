@@ -1,7 +1,7 @@
-export class IModal {
+export class IModalUI {
     constructor() {
-        if (new.target === IModal) {
-            throw TypeError("Cannot construct IModal instance directly.");
+        if (new.target === IModalUI) {
+            throw TypeError("Cannot construct IModalUI instance directly.");
         }
     }
 

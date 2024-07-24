@@ -1,8 +1,12 @@
 export class Controller {
-    constructor(modalUI, list, wrongList) {
+    constructor(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds) {
         this.modalUI = modalUI;
         this.list = list;
         this.wrongList = wrongList;
+        this.modalAnswerUI = modalAnswerUI;
+        this.progressBar = progressBar;
+        this.progressBarUI = progressBarUI;
+        this.sounds = sounds;
         this.init();
         this.id = JSON.parse(localStorage.getItem("id-words")) || 1;
         this.cpt = 0;
@@ -20,17 +24,19 @@ export class Controller {
     }
 
     handleClicks(e) {
-        if (e.target.classList.contains("add-word")) {
-            this.modalUI.open("modal");
+        if(e.target.classList.contains("bars")){
+            document.querySelector(".menu").classList.toggle("hidden");
+        }else if (e.target.classList.contains("add-word")) {
+            this.modalUI.open(".modal");
         } else if (e.target.classList.contains("exitModal")) {
-            this.modalUI.close("modal");
+            this.modalUI.close(".modal");
         } else if (e.target.classList.contains("send-word")) {
             this.addCard(e);
         } else if (e.target.classList.contains("array-all")) {
-            this.modalUI.close("modal");
-            document.querySelector(".modalAnswer").style.display = "none";
-            document.querySelector(".cardsContainer").style.display = "none";
-            document.querySelector(".modalAnswerWrong").style.display = "none";
+            this.modalUI.close(".modal");
+            this.modalAnswerUI.close(".modalAnswer");
+            this.modalAnswerUI.close(".cardsContainer");
+            this.modalAnswerUI.close(".modalAnswerWrong");
             this.cpt = 0;
             this.all = true;
             this.wrong = false;
@@ -41,12 +47,12 @@ export class Controller {
         } else if (e.target.classList.contains("card")) {
             this.translate(e);
             if (this.all) {
-                document.querySelector(".modalAnswer").style.display = "flex";
+                this.modalAnswerUI.open(".modalAnswer");
             } else if (this.wrong) {
-                document.querySelector(".modalAnswerWrong").style.display = "flex";
+                this.modalAnswerUI.open(".modalAnswerWrong");
             }
         } else if (e.target.classList.contains("btn-no")) {
-            this.faill();
+            this.sounds.faill();
             if (this.wrong === true) {
                 this.continues();
             } else {
@@ -54,13 +60,13 @@ export class Controller {
             }
 
         } else if (e.target.classList.contains("btn-yes")) {
-            this.success();
+            this.sounds.success();
             this.continues(e);
         } else if (e.target.classList.contains("array-wrong")) {
-            this.modalUI.close("modal");
-            document.querySelector(".modalAnswer").style.display = "none";
-            document.querySelector(".cardsContainer").style.display = "none";
-            document.querySelector(".modalAnswerWrong").style.display = "none";
+            this.modalUI.close(".modal");
+            this.modalAnswerUI.close(".modalAnswer");
+            this.modalAnswerUI.close(".cardsContainer");
+            this.modalAnswerUI.close(".modalAnswerWrong");
             this.cpt = 0;
             this.wrong = true;
             this.all = false;
@@ -121,35 +127,20 @@ export class Controller {
         }
     }
 
-    success() {
-        const audio = new Audio();
-        audio.src = "/assets/files/success_sound.wav";
-        audio.play();
-    }
 
-    faill() {
-        const audio = new Audio();
-        audio.src = "/assets/files/chewbacca.mp3";
-        audio.play();
-    }
-
-    pass() {
-        const heartBeat = "https://universal-soundbank.com/sounds/350.mp3";
-        const magneto = "https://universal-soundbank.com/sounds/3802.mp3";
-        const clacquement = "https://universal-soundbank.com/sounds/2166.mp3";
-        const audio = new Audio();
-        audio.src = clacquement;
-        audio.play();
-    }
 
 
     initCards() {
-        this.progressBar();
+        const list = this.all ? this.list.list : this.wrongList.wrongList;
+        const res = this.progressBar.getInfoForPercentilConversion(this.cpt, list);
+        this.progressBarUI.displayFraction(res);
+        this.progressBarUI.displayPercentils(res);
+
         const kindOfArray = this.all ? this.list.list : this.wrongList.wrongList;
         document.querySelector(".cardsContainer").classList.add("rightToLeft");
         const cardContainer = document.querySelector(".cardsContainer");
         cardContainer.setAttribute("data-id", kindOfArray[this.cpt].id);
-        document.querySelector(".cardsContainer").style.display = "flex";
+        this.modalAnswerUI.open(".cardsContainer");
         if (this.isReversed) {
             document.querySelector(".word").textContent = kindOfArray[this.cpt].ukName;
         } else {
@@ -166,66 +157,27 @@ export class Controller {
         } else {
             document.querySelector(".word").textContent = this.list.list.find(card => parseInt(card.id) === parseInt(id)).ukName;
         }
-        this.pass();
+        this.sounds.pass();
     }
 
     continues() {
-        document.querySelector(".modalAnswer").style.display = "none";
-        document.querySelector(".modalAnswerWrong").style.display = "none";
+        this.modalAnswerUI.close(".modalAnswer");
+        this.modalAnswerUI.close(".modalAnswerWrong");
         const kindOfArray = this.all ? this.list.list : this.wrongList.wrongList;
         if (kindOfArray.length - 1 <= this.cpt) {
             this.wrong = false;
             this.all = false;
-            document.querySelector(".cardsContainer").style.display = "none";
+            this.modalAnswerUI.close(".cardsContainer");
             return;
         }
         this.cpt++;
         this.initCards();
     }
 
-    progressBar() {
-        if (this.all) {
-            document.querySelector(".compteur").textContent = `${this.cpt + 1} / ${this.list.list.length}`;
-            let bar = document.querySelector(".box__progressBar");
-            let percentils = document.querySelector(".box__percentils");
-            bar.style.width = "0%";
-
-            const baseLeft = this.cpt + 1;
-            const baseRight = this.list.list.length;
-
-            const multiplicateur = 100 / baseRight;
-            const finalLeft = baseLeft * multiplicateur;
-
-            percentils.textContent = `${finalLeft.toFixed(2)}%`;
-            const widthBody = document.body.clientWidth;
-            let nb = 4;
-            if (widthBody <= 735) {
-                nb = 2;
-            }
-            percentils.style.transform = `translateX(${nb * finalLeft}px) translateY(-150%)`;
-            bar.style.width = `${finalLeft}%`;
-        } else {
-            document.querySelector(".compteur").textContent = `${this.cpt + 1} / ${this.wrongList.wrongList.length}`;
-            let bar = document.querySelector(".box__progressBar");
-            let percentils = document.querySelector(".box__percentils");
-            bar.style.width = "0%";
-
-            const baseLeft = this.cpt + 1;
-            const baseRight = this.wrongList.wrongList.length;
-
-            const multiplicateur = 100 / baseRight;
-            const finalLeft = baseLeft * multiplicateur;
-
-            percentils.textContent = `${finalLeft.toFixed(2)}%`;
-            percentils.style.transform = `translateX(${4 * finalLeft}px) translateY(-150%)`;
-            bar.style.width = `${finalLeft}%`;
-        }
-
-    }
-
     checkIf2CardsAreSame(currentEnglishWord) {
         return this.list.list.some((card) => card.ukName === currentEnglishWord);
     }
+
     addCard(e) {
         const wordsContainer = e.target.closest(".addingWordsModal");
         const frWord = wordsContainer.querySelector(".frWord");
@@ -247,14 +199,13 @@ export class Controller {
         this.id++;
         localStorage.setItem("id-words", JSON.stringify(this.id));
         this.modalUI.cleanInputs();
-        this.modalUI.close("modal");
+        this.modalUI.close(".modal");
     }
 
     addCardInWrongList(e) {
         let id = parseInt(e.target.closest(".cardsContainer").dataset.id);
         const card = this.list.list.find(card => parseInt(card.id) === id);
         if (this.wrongList.wrongList.includes(card)) {
-            // console.log("cette carte à déjà été ajouté");
             this.continues();
             return;
         }

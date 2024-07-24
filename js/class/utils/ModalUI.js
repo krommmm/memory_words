@@ -1,16 +1,16 @@
-import { IModal } from "../interfaces/IModal.js";
+import { IModalUI } from "../interfaces/IModalUI.js";
 
-export class ModalUI extends IModal {
+export class ModalUI extends IModalUI {
     constructor() {
         super();
     }
 
     open(selector) {
-        document.querySelector(`.${selector}`).style.transform = "translateY(200px)";
+        document.querySelector(`${selector}`).style.transform = "translateY(200px)";
     }
 
     close(selector) {
-        document.querySelector(`.${selector}`).style.transform = "translateY(-616px)";
+        document.querySelector(`${selector}`).style.transform = "translateY(-616px)";
     }
 
     cleanInputs() {

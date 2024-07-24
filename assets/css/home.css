@@ -182,11 +182,11 @@ h2 {
         width: 200px;
     }
 
-    body header {
+    /* body header {
         flex-direction: column;
         z-index: 999999999999;
         position: relative;
-    }
+    } */
 
     body .modal {
     left:5%;
