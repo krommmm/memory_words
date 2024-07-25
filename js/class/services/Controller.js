@@ -28,6 +28,7 @@ export class Controller {
             this.modalAnswerUI.close(".cardsContainer");
             document.querySelector(".menu").classList.toggle("hidden");
         } else if (e.target.classList.contains("add-word")) {
+            this.modalAnswerUI.open(".background");
             this.modalUI.open(".modal");
             document.querySelector(".menu").classList.remove("hidden");
         } else if (e.target.classList.contains("exitModal")) {
@@ -35,6 +36,7 @@ export class Controller {
         } else if (e.target.classList.contains("send-word")) {
             this.addCard(e);
         } else if (e.target.classList.contains("array-all")) {
+            this.modalAnswerUI.close(".background");
             this.modalUI.close(".modal");
             document.querySelector(".menu").classList.remove("hidden");
             this.modalAnswerUI.close(".modalAnswer");
@@ -65,6 +67,7 @@ export class Controller {
             this.sounds.success();
             this.continues(e);
         } else if (e.target.classList.contains("array-wrong")) {
+            this.modalAnswerUI.close(".background");
             document.querySelector(".menu").classList.remove("hidden");
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".modalAnswer");

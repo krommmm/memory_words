@@ -160,6 +160,13 @@ h2 {
     font-size: 12px;
 }
 
+.background{
+    width: 100vw;
+    height: 100vh;
+    background-image:url("../pictures/wallpaper/mobile_vibes.jpg");
+    background-size: contain;
+}
+
 @media screen and (max-width:735px) {
     body .btnAnswer {
         width: 44px;
