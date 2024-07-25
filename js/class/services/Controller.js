@@ -27,7 +27,6 @@ export class Controller {
         if (e.target.classList.contains("bars")) {
             this.modalAnswerUI.close(".cardsContainer");
             document.querySelector(".menu").classList.toggle("hidden");
-
         } else if (e.target.classList.contains("add-word")) {
             this.modalUI.open(".modal");
             document.querySelector(".menu").classList.remove("hidden");
@@ -83,10 +82,10 @@ export class Controller {
             this.deleteCard(e);
             this.continues();
         } else if (e.target.classList.contains("frUk")) {
-            document.querySelector(".menu").classList.remove("hidden");
+            this.beatHeart(e);
             this.isReversed = false;
         } else if (e.target.classList.contains("ukFr")) {
-            document.querySelector(".menu").classList.remove("hidden");
+            this.beatHeart(e);
             this.isReversed = true;
         } else if (e.target.classList.contains("btn-next")) {
             this.continues();
@@ -94,6 +93,12 @@ export class Controller {
             this.deleteWrongCard(e);
             this.continues();
         }
+    }
+
+    async beatHeart(e) {
+        e.target.classList.add("heart");
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        e.target.classList.remove("heart");
     }
 
     resetWrongArray() {
@@ -203,7 +208,7 @@ export class Controller {
         this.id++;
         localStorage.setItem("id-words", JSON.stringify(this.id));
         this.modalUI.cleanInputs();
-        this.modalUI.close(".modal");
+        
     }
 
     addCardInWrongList(e) {
