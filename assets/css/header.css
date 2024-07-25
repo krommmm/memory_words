@@ -17,8 +17,7 @@ header {
     background-color: rgba(216, 223, 234);
     color: rgba(59, 89, 152); */
     cursor: pointer;
-    margin-right: 15px;
-    margin-bottom: 10px;
+
 }
 
 /* .arrays:hover {
@@ -84,4 +83,16 @@ header {
 
 .hidden {
     display: flex;
+}
+
+.arraysContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.arraysContainer p{
+    color:black;
+    font-weight:600;
 }
