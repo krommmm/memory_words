@@ -13,4 +13,16 @@ export class IModalAnswerUI {
         throw new Error("close method must be implemented");
     }
 
+    toggle(selector) {
+        throw new Error("toggle method must be implemented");
+    }
+
+    add(selector) {
+        throw new Error("add method must be implemented");
+    }
+
+    remove(selector) {
+        throw new Error("remove method must be implemented");
+    }
+
 }

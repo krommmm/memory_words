@@ -1,0 +1,10 @@
+.optionsModal{
+    display:none;
+    padding: 15px;
+    background-color:white;
+    position:absolute;
+    border:1px solid black;
+}
+.optionsModal .btn{
+    margin-right: 10px;
+}

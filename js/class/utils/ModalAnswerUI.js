@@ -13,4 +13,16 @@ export class ModalAnswerUI extends IModalAnswerUI {
         document.querySelector(`${selector}`).style.display = "none";
     }
 
+    toggle(selector) {
+        document.querySelector(selector).classList.toggle("hidden");
+    }
+
+    add(selector) {
+        document.querySelector(selector).classList.add("hidden");
+    }
+
+    remove(selector) {
+        document.querySelector(selector).classList.remove("hidden");
+    }
+
 }

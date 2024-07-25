@@ -6,6 +6,7 @@ import { ModalAnswerUI } from "./class/utils/ModalAnswerUI.js";
 import { ProgressBar } from "./class/utils/ProgressBar.js";
 import { ProgressBarUI } from "./class/utils/ProgressBarUI.js";
 import { Sounds } from "./class/utils/Sounds.js";
+import { Cards } from "./class/utils/Cards.js";
 
 
 document.addEventListener("DOMContentLoaded", (e) => {
@@ -16,5 +17,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     const progressBar = new ProgressBar();
     const progressBarUI = new ProgressBarUI();
     const sounds = new Sounds();
-    new Controller(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds);
+    const cards = new Cards();
+    new Controller(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds, cards);
 });

@@ -1,7 +1,7 @@
-export class ICardsUI {
+export class ICards {
     constructor() {
-        if (new.target === ICardsUI) {
-            throw TypeError("Cannot construct ICardsUI instance directly.");
+        if (new.target === ICards) {
+            throw TypeError("Cannot construct ICards instance directly.");
         }
     }
 

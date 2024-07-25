@@ -1,14 +1,15 @@
 export class Controller {
-    constructor(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds) {
+    constructor(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds, cards) {
         this.modalUI = modalUI;
         this.list = list;
         this.wrongList = wrongList;
         this.modalAnswerUI = modalAnswerUI;
         this.progressBar = progressBar;
         this.progressBarUI = progressBarUI;
+        this.currentList = [];
         this.sounds = sounds;
+        this.cards = cards;
         this.init();
-        this.id = JSON.parse(localStorage.getItem("id-words")) || 1;
         this.cpt = 0;
         this.all = false;
         this.wrong = false;
@@ -17,6 +18,7 @@ export class Controller {
 
     init() {
         this.bindEvents();
+        this.currentList = this.list.list;
     }
 
     bindEvents() {
@@ -27,19 +29,19 @@ export class Controller {
         if (e.target.classList.contains("bars")) {
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".cardsContainer");
-            document.querySelector(".menu").classList.toggle("hidden");
+            this.modalAnswerUI.toggle(".menu");
         } else if (e.target.classList.contains("add-word")) {
             this.modalAnswerUI.open(".background");
             this.modalUI.open(".modal");
-            document.querySelector(".menu").classList.remove("hidden");
+            this.modalAnswerUI.remove(".menu");
         } else if (e.target.classList.contains("exitModal")) {
             this.modalUI.close(".modal");
         } else if (e.target.classList.contains("send-word")) {
-            this.addCard(e);
+            this.cards.addCard(e, this.list, this.modalUI);
         } else if (e.target.classList.contains("array-all")) {
             this.modalAnswerUI.close(".background");
             this.modalUI.close(".modal");
-            document.querySelector(".menu").classList.remove("hidden");
+            this.modalAnswerUI.toggle(".menu");
             this.modalAnswerUI.close(".modalAnswer");
             this.modalAnswerUI.close(".cardsContainer");
             this.modalAnswerUI.close(".modalAnswerWrong");
@@ -47,8 +49,7 @@ export class Controller {
             this.all = true;
             this.wrong = false;
             if (this.list.list.length <= 0) { return; }
-            this.mixWordsRandomly();
-            this.initCards();
+            this.cards.initCards(this.currentList, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
         } else if (e.target.classList.contains("card")) {
             this.translate(e);
             if (this.all) {
@@ -59,17 +60,18 @@ export class Controller {
         } else if (e.target.classList.contains("btn-no")) {
             this.sounds.faill();
             if (this.wrong === true) {
-                this.continues();
+                this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+                this.cards.initCards(this.currentList, wrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
             } else {
                 this.addCardInWrongList(e);
             }
-
         } else if (e.target.classList.contains("btn-yes")) {
             this.sounds.success();
-            this.continues(e);
+            this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+            this.cards.initCards(this.currentList, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
         } else if (e.target.classList.contains("array-wrong")) {
             this.modalAnswerUI.close(".background");
-            document.querySelector(".menu").classList.remove("hidden");
+            this.modalAnswerUI.remove(".menu");
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".modalAnswer");
             this.modalAnswerUI.close(".cardsContainer");
@@ -78,13 +80,14 @@ export class Controller {
             this.wrong = true;
             this.all = false;
             if (this.wrongList.wrongList.length <= 0) { return; }
-            this.initCards();
+            this.cards.initCards(this.currentList, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
         } else if (e.target.classList.contains("resetWrongArray")) {
-            document.querySelector(".menu").classList.remove("hidden");
+            this.modalAnswerUI.remove(".menu");
             this.resetWrongArray();
         } else if (e.target.classList.contains("delete")) {
-            this.deleteCard(e);
-            this.continues();
+            this.cards.deleteCard(e, this.list);
+            this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+            this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed
         } else if (e.target.classList.contains("frUk")) {
             this.beatHeart(e);
             this.isReversed = false;
@@ -92,10 +95,37 @@ export class Controller {
             this.beatHeart(e);
             this.isReversed = true;
         } else if (e.target.classList.contains("btn-next")) {
-            this.continues();
+            this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+            this.cards.initCards(this.currentList, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
         } else if (e.target.classList.contains("deleteWrong")) {
             this.deleteWrongCard(e);
-            this.continues();
+            this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+            this.cards.initCards(this.currentList, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
+        } else if (e.target.classList.contains("options")) {
+            this.modalAnswerUI.open(".optionsModal");
+
+        } else if (e.target.classList.contains("ordered")) {
+            this.modalAnswerUI.close(".optionsModal");
+            this.currentList = this.list.list;
+            console.log(this.list.list);
+
+        } else if (e.target.classList.contains("reversed")) {
+            this.modalAnswerUI.close(".optionsModal");
+            this.currentList = JSON.parse(JSON.stringify(this.list.list));
+            this.currentList.reverse();
+            console.log(this.list.list);
+
+        } else if (e.target.classList.contains("shuffle")) {
+            this.mixWordsRandomly();
+            this.modalAnswerUI.close(".optionsModal");
+            console.log(this.list.list);
+
+        } else if (e.target.classList.contains("times")) {
+            this.modalAnswerUI.close(".optionsModal");
+
+        } else if (e.target.classList.contains("irregularVerbs")) {
+            this.modalAnswerUI.close(".optionsModal");
+
         }
     }
 
@@ -112,13 +142,6 @@ export class Controller {
         }
     }
 
-    deleteCard(e) {
-        if (confirm("Would you like delete this word")) {
-            const container = e.target.closest(".cardsContainer");
-            const id = container.dataset.id;
-            this.list.deleteWord(id);
-        }
-    }
     deleteWrongCard(e) {
         if (confirm("Would you like delete this word")) {
             const container = e.target.closest(".cardsContainer");
@@ -135,31 +158,14 @@ export class Controller {
             }
             return array;
         }
-        const array = this.all ? this.list.list : this.wrongList.wrongList;
-        if (this.all) {
-            this.list.list = shuffle(array);
-        } else {
-            this.wrongList.wrongList = shuffle(array)
-        }
-    }
-
-
-    initCards() {
-        const list = this.all ? this.list.list : this.wrongList.wrongList;
-        const res = this.progressBar.getInfoForPercentilConversion(this.cpt, list);
-        this.progressBarUI.displayFraction(res);
-        this.progressBarUI.displayPercentils(res);
-
-        const kindOfArray = this.all ? this.list.list : this.wrongList.wrongList;
-        document.querySelector(".cardsContainer").classList.add("rightToLeft");
-        const cardContainer = document.querySelector(".cardsContainer");
-        cardContainer.setAttribute("data-id", kindOfArray[this.cpt].id);
-        this.modalAnswerUI.open(".cardsContainer");
-        if (this.isReversed) {
-            document.querySelector(".word").textContent = kindOfArray[this.cpt].ukName;
-        } else {
-            document.querySelector(".word").textContent = kindOfArray[this.cpt].frName;
-        }
+        this.currentList = JSON.parse(JSON.stringify(this.list.list));
+        this.currentList = shuffle(this.currentList);
+        // const array = this.all ? this.list.list : this.wrongList.wrongList;
+        // if (this.all) {
+        //     this.currentList = shuffle(array);
+        // } else {
+        //     this.wrongList.wrongList = shuffle(array)
+        // }
     }
 
     translate(e) {
@@ -173,57 +179,17 @@ export class Controller {
         this.sounds.pass();
     }
 
-    continues() {
-        this.modalAnswerUI.close(".modalAnswer");
-        this.modalAnswerUI.close(".modalAnswerWrong");
-        const kindOfArray = this.all ? this.list.list : this.wrongList.wrongList;
-        if (kindOfArray.length - 1 <= this.cpt) {
-            this.wrong = false;
-            this.all = false;
-            this.modalAnswerUI.close(".cardsContainer");
-            return;
-        }
-        this.cpt++;
-        this.initCards();
-    }
-
-    checkIf2CardsAreSame(currentEnglishWord) {
-        return this.list.list.some((card) => card.ukName === currentEnglishWord);
-    }
-
-    addCard(e) {
-        const wordsContainer = e.target.closest(".addingWordsModal");
-        const frWord = wordsContainer.querySelector(".frWord");
-        const ukWord = wordsContainer.querySelector(".ukWord");
-
-        const doesThisWordAlreadyExists = this.checkIf2CardsAreSame(ukWord.value);
-        if (doesThisWordAlreadyExists) {
-            alert("You can't push this english word in the array since it's already in.");
-            return;
-        }
-
-        const card = {
-            id: this.id,
-            frName: frWord.value,
-            ukName: ukWord.value
-        }
-        this.list.addWord(card);
-
-        this.id++;
-        localStorage.setItem("id-words", JSON.stringify(this.id));
-        this.modalUI.cleanInputs();
-        
-    }
-
     addCardInWrongList(e) {
         let id = parseInt(e.target.closest(".cardsContainer").dataset.id);
         const card = this.list.list.find(card => parseInt(card.id) === id);
         if (this.wrongList.wrongList.includes(card)) {
-            this.continues();
+            this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+            this.cards.initCards(this.currentList, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
             return;
         }
         this.wrongList.addWord(card);
-        this.continues();
+        this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+        this.cards.initCards(this.currentList, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
     }
 
 }
