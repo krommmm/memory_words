@@ -25,6 +25,7 @@ export class Controller {
 
     handleClicks(e) {
         if (e.target.classList.contains("bars")) {
+            this.modalUI.close(".modal");
             this.modalAnswerUI.close(".cardsContainer");
             document.querySelector(".menu").classList.toggle("hidden");
         } else if (e.target.classList.contains("add-word")) {
