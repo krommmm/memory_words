@@ -1,40 +1,53 @@
 .btn {
-    background-color: #5F78AB;
-    border: 1px solid #888888;
-    border-top-color: rgb(136, 136, 136);
-    border-right-color: rgb(136, 136, 136);
-    border-bottom-color: rgb(136, 136, 136);
-    border-left-color: rgb(136, 136, 136);
-    border-color: #26446E #152F5F #0C2253;
-    color: #FFFFFF;
-    text-shadow: 0 1px 0 #3E5A88;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 3px 6px 4px;
-    text-align: center;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid purple;
+    color: purple;
+    font-weight: 600;
     cursor: pointer;
-    display: inline-block;
+    transition-duration: .8s;
     cursor: pointer;
     transition-duration: .2s;
+    font-size:14px;
 }
 
 .btn:active {
     transform: scale(.8);
 }
+.btn:hover{
+    box-shadow: 5px 5px 15px 0px rgba(0,0,0,.3);
+}
 
 .modal {
     transform: translateY(-616px);
     transition-duration: .4s;
-    border: 1px solid black;
     padding: 20px;
     width: 400px;
     margin: auto;
     background-color: white;
     z-index: 9999;
     position: absolute;
-    top:200px;
+    top: 200px;
     left: 40%;
 }
-.modal input{
+
+.addingWordsModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_words {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal input {
     padding-left: 10px;
+    margin: 7px;
+    height: 24px;
+    border-radius: 3px;
 }
