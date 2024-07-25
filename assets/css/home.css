@@ -162,9 +162,11 @@ h2 {
 
 .background{
     width: 100vw;
-    height: 84vh;
+    height:1000px;
     background-image:url("../pictures/wallpaper/palmiers.jpeg");
-    background-size: contain;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center;
 }
 
 @media screen and (max-width:735px) {
