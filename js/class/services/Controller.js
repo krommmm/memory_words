@@ -24,16 +24,20 @@ export class Controller {
     }
 
     handleClicks(e) {
-        if(e.target.classList.contains("bars")){
+        if (e.target.classList.contains("bars")) {
+            this.modalAnswerUI.close(".cardsContainer");
             document.querySelector(".menu").classList.toggle("hidden");
-        }else if (e.target.classList.contains("add-word")) {
+
+        } else if (e.target.classList.contains("add-word")) {
             this.modalUI.open(".modal");
+            document.querySelector(".menu").classList.remove("hidden");
         } else if (e.target.classList.contains("exitModal")) {
             this.modalUI.close(".modal");
         } else if (e.target.classList.contains("send-word")) {
             this.addCard(e);
         } else if (e.target.classList.contains("array-all")) {
             this.modalUI.close(".modal");
+            document.querySelector(".menu").classList.remove("hidden");
             this.modalAnswerUI.close(".modalAnswer");
             this.modalAnswerUI.close(".cardsContainer");
             this.modalAnswerUI.close(".modalAnswerWrong");
@@ -41,7 +45,6 @@ export class Controller {
             this.all = true;
             this.wrong = false;
             if (this.list.list.length <= 0) { return; }
-
             this.mixWordsRandomly();
             this.initCards();
         } else if (e.target.classList.contains("card")) {
@@ -63,6 +66,7 @@ export class Controller {
             this.sounds.success();
             this.continues(e);
         } else if (e.target.classList.contains("array-wrong")) {
+            document.querySelector(".menu").classList.remove("hidden");
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".modalAnswer");
             this.modalAnswerUI.close(".cardsContainer");
@@ -73,13 +77,16 @@ export class Controller {
             if (this.wrongList.wrongList.length <= 0) { return; }
             this.initCards();
         } else if (e.target.classList.contains("resetWrongArray")) {
+            document.querySelector(".menu").classList.remove("hidden");
             this.resetWrongArray();
         } else if (e.target.classList.contains("delete")) {
             this.deleteCard(e);
             this.continues();
         } else if (e.target.classList.contains("frUk")) {
+            document.querySelector(".menu").classList.remove("hidden");
             this.isReversed = false;
         } else if (e.target.classList.contains("ukFr")) {
+            document.querySelector(".menu").classList.remove("hidden");
             this.isReversed = true;
         } else if (e.target.classList.contains("btn-next")) {
             this.continues();
@@ -128,8 +135,6 @@ export class Controller {
     }
 
 
-
-
     initCards() {
         const list = this.all ? this.list.list : this.wrongList.wrongList;
         const res = this.progressBar.getInfoForPercentilConversion(this.cpt, list);
@@ -146,7 +151,6 @@ export class Controller {
         } else {
             document.querySelector(".word").textContent = kindOfArray[this.cpt].frName;
         }
-
     }
 
     translate(e) {
