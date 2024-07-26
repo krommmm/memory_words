@@ -1,10 +1,48 @@
-.optionsModal{
-    display:none;
+/* OPTION MODAL */
+
+.optionsModal {
+    display: none;
     padding: 15px;
-    background-color:white;
-    position:absolute;
-    border:1px solid black;
+    background-color: white;
+    position: absolute;
+    border: 1px solid black;
 }
-.optionsModal .btn{
+
+.optionsModal .btn {
     margin-right: 10px;
+}
+
+.modal {
+    transform: translateY(-616px);
+    transition-duration: .4s;
+    padding: 20px;
+    width: 400px;
+    margin: auto;
+    background-color: white;
+    z-index: 9999;
+    position: absolute;
+    top: 200px;
+    left: 40%;
+}
+
+/* ADDING WORDS MODAL */
+.addingWordsModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_words {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal input {
+    padding-left: 10px;
+    margin: 7px;
+    height: 24px;
+    border-radius: 3px;
 }

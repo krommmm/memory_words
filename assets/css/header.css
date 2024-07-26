@@ -81,9 +81,7 @@ header {
     right: 15px;
 }
 
-.hidden {
-    display: flex;
-}
+
 
 .arraysContainer {
     display: flex;

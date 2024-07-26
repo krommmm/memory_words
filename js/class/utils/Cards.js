@@ -38,8 +38,9 @@ export class Cards extends ICards {
     }
 
 
-    initCards(list, wrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed) {
-        list = all ? list : wrongList.wrongList;
+    initCards(list, wrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed) {
+
+        list = all ? list : wrongList;
         if (cpt === undefined) { // si on est arrivé à la fin du tableau (logique dans continues return)
             return;
         }
@@ -61,7 +62,7 @@ export class Cards extends ICards {
     continues(list, wrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed) {
         modalAnswerUI.close(".modalAnswer");
         modalAnswerUI.close(".modalAnswerWrong");
-        list = all ? list.list : wrongList.wrongList;
+        list = all ? list : wrongList;
         if (list.length - 1 <= cpt) {
             wrong = false;
             all = false;

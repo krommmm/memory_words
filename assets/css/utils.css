@@ -1,8 +1,7 @@
 .btn {
-    background-color: white;
     padding: 5px;
-    border: 1px solid purple;
-    color: purple;
+    background-color: purple;
+    color: white;
     font-weight: 600;
     cursor: pointer;
     transition-duration: .8s;
@@ -19,36 +18,11 @@
     box-shadow: 5px 5px 15px 0px rgba(0,0,0,.3);
 }
 
-.modal {
-    transform: translateY(-616px);
-    transition-duration: .4s;
-    padding: 20px;
-    width: 400px;
-    margin: auto;
-    background-color: white;
-    z-index: 9999;
-    position: absolute;
-    top: 200px;
-    left: 40%;
-}
 
-.addingWordsModal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.input_words {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.modal input {
-    padding-left: 10px;
-    margin: 7px;
-    height: 24px;
-    border-radius: 3px;
+
+
+.hidden {
+    display: flex!important;
 }
