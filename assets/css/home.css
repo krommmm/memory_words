@@ -73,9 +73,7 @@
 
 h1 {
     font-weight: 600;
-    color: rgb(122, 119, 111);
     font-size: 15px;
-    margin-bottom: 30px;
 }
 
 .background__title {
@@ -137,6 +135,7 @@ h1 {
 .background img {
     width: 200px;
     margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 /* PROGRESS BAR */
