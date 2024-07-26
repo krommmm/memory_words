@@ -1,5 +1,47 @@
-/* OPTION MODAL */
+/* MODAL ANSWER */
+.modalAnswer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
 
+.modalAnswer__top {
+    background-color: rgb(215, 241, 242);
+    height: 50px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.btn-no,
+.btn-yes {
+    color: white;
+}
+
+.delete {
+    position: absolute;
+    top: 3px;
+    right: 2px;
+}
+
+.modalAnswer__top p {
+    font-weight: 600;
+}
+
+.modalAnswer__bottom {
+    display: flex;
+    margin: 15px 0px;
+}
+
+.btnAsnwer {
+    width: 120px;
+}
+
+/* OPTION MODAL */
 .optionsModal {
     display: none;
     flex-direction: column;
@@ -55,10 +97,10 @@
     align-items: center;
     border-radius: 15px;
     border: 1px solid black;
-  padding: 15px;
+    padding: 15px;
 }
 
-.addingWordsModal p{
+.addingWordsModal p {
     font-weight: 600;
     margin: 15px 0px;
 }
