@@ -65,14 +65,14 @@ export class Controller {
         } else if (e.target.classList.contains("btn-no")) {
             this.sounds.faill();
             if (this.wrong === true) {
-                this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+                this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
                 this.cards.initCards(this.currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
             } else {
                 this.addCardInWrongList(e);
             }
         } else if (e.target.classList.contains("btn-yes")) {
             this.sounds.success();
-            this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+            this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
         } else if (e.target.classList.contains("array-wrong")) {
             this.modalAnswerUI.close(".background");
@@ -91,7 +91,7 @@ export class Controller {
             this.resetWrongArray();
         } else if (e.target.classList.contains("delete")) {
             this.cards.deleteCard(e, this.list);
-            this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+            this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
             this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed
         } else if (e.target.classList.contains("frUk")) {
             this.beatHeart(e);
@@ -104,7 +104,7 @@ export class Controller {
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
         } else if (e.target.classList.contains("deleteWrong")) {
             this.deleteWrongCard(e);
-            this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+            this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
         } else if (e.target.classList.contains("options")) {
             this.modalAnswerUI.toggle(".optionsModal");
@@ -188,12 +188,12 @@ export class Controller {
         let id = parseInt(e.target.closest(".cardsContainer").dataset.id);
         const card = this.list.list.find(card => parseInt(card.id) === id);
         if (this.wrongList.wrongList.includes(card)) {
-            this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+            this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
             return;
         }
         this.wrongList.addWord(card);
-        this.cpt = this.cards.continues(this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+        this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
         this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
     }
 

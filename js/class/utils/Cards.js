@@ -63,6 +63,7 @@ export class Cards extends ICards {
         modalAnswerUI.close(".modalAnswer");
         modalAnswerUI.close(".modalAnswerWrong");
         list = all ? list : wrongList;
+
         if (list.length - 1 <= cpt) {
             wrong = false;
             all = false;

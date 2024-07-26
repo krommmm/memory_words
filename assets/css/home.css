@@ -78,12 +78,21 @@ h1 {
     margin-bottom: 30px;
 }
 
-h2 {
-    margin: 14px 0px;
-    padding: 6px;
-    border-radius: 7px;
-    color: white;
-    background-color: rgb(76, 211, 15);
+.background__title {
+    margin-bottom: 20px;
+}
+
+.background__title h2 {
+    color: black;
+    font-family: cursive;
+    /* background-color: rgb(76, 211, 15); */
+}
+
+.background__description {
+    display: flex;
+    justify-content: center;
+    width: 73%;
+    text-align: center;
 }
 
 .send-word {
@@ -122,6 +131,12 @@ h2 {
 .modalAnswer>p {
     font-weight: 600;
     margin-right: 15px;
+}
+
+/* BACKGROUND */
+.background img {
+    width: 200px;
+    margin-bottom: 50px;
 }
 
 /* PROGRESS BAR */
@@ -174,9 +189,7 @@ h2 {
     margin: auto;
 }
 
-.background h2 {
-    margin-top: 50px;
-}
+
 
 .background p {
     margin-top: 22px;
