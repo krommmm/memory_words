@@ -36,7 +36,7 @@
 }
 
 .modal {
-    transform: translateY(-640px);
+    transform: translateY(-932px);
     transition-duration: .4s;
     padding: 20px;
     width: 400px;
@@ -44,7 +44,6 @@
     background-color: white;
     z-index: 9999;
     position: absolute;
-    top: 200px;
     left: 40%;
 }
 

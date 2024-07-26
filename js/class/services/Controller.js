@@ -140,6 +140,8 @@ export class Controller {
         }
     }
 
+ 
+
     async beatHeart(e) {
         e.target.classList.add("heart");
         await new Promise((resolve) => setTimeout(resolve, 1000));
