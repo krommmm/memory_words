@@ -9,6 +9,7 @@
     transition-duration: .2s;
     font-size:14px;
     display:inline-block;
+    border-radius:3px;
 }
 
 .btn:active {
@@ -18,11 +19,19 @@
     box-shadow: 5px 5px 15px 0px rgba(0,0,0,.3);
 }
 
-
-
-
-
-
 .hidden {
     display: flex!important;
+}
+
+.redBtn{
+    padding: 5px;
+    background-color: red;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition-duration: .8s;
+    cursor: pointer;
+    transition-duration: .2s;
+    font-size:14px;
+    display:inline-block;
 }

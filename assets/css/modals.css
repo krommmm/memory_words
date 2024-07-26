@@ -16,15 +16,16 @@
     display: flex;
     flex-direction: column;
 }
-.optionsModal--title{
-    font-weight:600;
-    font-size:20px;
-    font-family:cursive;
+
+.optionsModal--title {
+    font-weight: 600;
+    font-size: 20px;
+    font-family: cursive;
     margin-bottom: 15px;
 }
 
 .btnOptions {
-    border: 2px solid rgba(0,0,0,.1);
+    border: 2px solid rgba(0, 0, 0, .1);
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
@@ -53,6 +54,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 15px;
+    border: 1px solid black;
+  padding: 15px;
+}
+
+.addingWordsModal p{
+    font-weight: 600;
+    margin: 15px 0px;
 }
 
 .input_words {
@@ -67,4 +76,19 @@
     margin: 7px;
     height: 24px;
     border-radius: 3px;
+}
+
+.addingWordsModal__top {
+    background-image: url("/assets/pictures/add_img.jpg");
+    height: 200px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+}
+
+.add-arrondi {
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 5px;
+    float: right;
 }

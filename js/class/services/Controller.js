@@ -34,6 +34,7 @@ export class Controller {
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".cardsContainer");
             this.modalAnswerUI.toggle(".menu");
+            this.modalAnswerUI.remove(".optionsModal");
         } else if (e.target.classList.contains("add-word")) {
             this.modalAnswerUI.open(".background");
             this.modalUI.open(".modal");
@@ -108,6 +109,7 @@ export class Controller {
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
         } else if (e.target.classList.contains("options")) {
             this.modalAnswerUI.toggle(".optionsModal");
+    
 
 
         } else if (e.target.classList.contains("ordered")) {
