@@ -93,6 +93,7 @@ export class Cards extends ICards {
     }
 
     checkIf2CardsAreSame(currentEnglishWord, list) {
-        return list.some((card) => card.ukName === currentEnglishWord);
+        console.log(list);
+        return list.list.some((card) => card.ukName === currentEnglishWord);
     }
 }
