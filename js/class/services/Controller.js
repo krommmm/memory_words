@@ -69,7 +69,7 @@ export class Controller {
                 this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
                 this.cards.initCards(this.currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
             } else {
-                this.addCardInWrongList(e);
+                this.cards.addCardInWrongList(e,this.list.list,this.wrongList,this.currentList,this.currentWrongList,this.progressBar,this.cpt,this.progressBarUI,this.modalAnswerUI,this.all,this.wrong,this.isReversed);
             }
         } else if (e.target.classList.contains("btn-yes")) {
             this.sounds.success();
@@ -140,8 +140,6 @@ export class Controller {
         }
     }
 
- 
-
     async beatHeart(e) {
         e.target.classList.add("heart");
         await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -188,17 +186,17 @@ export class Controller {
         this.sounds.pass();
     }
 
-    addCardInWrongList(e) {
-        let id = parseInt(e.target.closest(".cardsContainer").dataset.id);
-        const card = this.list.list.find(card => parseInt(card.id) === id);
-        if (this.wrongList.wrongList.includes(card)) {
-            this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
-            this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
-            return;
-        }
-        this.wrongList.addWord(card);
-        this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
-        this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
-    }
+    // addCardInWrongList(e) {
+    //     let id = parseInt(e.target.closest(".cardsContainer").dataset.id);
+    //     const card = this.list.list.find(card => parseInt(card.id) === id);
+    //     if (this.wrongList.wrongList.includes(card)) {
+    //         this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+    //         this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
+    //         return;
+    //     }
+    //     this.wrongList.addWord(card);
+    //     this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+    //     this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
+    // }
 
 }

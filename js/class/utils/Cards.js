@@ -72,10 +72,27 @@ export class Cards extends ICards {
         }
         cpt++;
         return cpt;
+    }
+
+    addCardInWrongList(e, list, wrongList, currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed) {
+        let id = parseInt(e.target.closest(".cardsContainer").dataset.id);
+        const card = list.find(card => parseInt(card.id) === id);
+
+        if (wrongList.wrongList.some((card) => card.id === id)) {
+            cpt = this.continues(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed);
+            this.initCards(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
+            alert("Cette carte a déjà été enregistrée");
+            return;
+        } else {
+            wrongList.addWord(card);
+            cpt = this.continues(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed);
+            this.initCards(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
+        }
+
 
     }
 
     checkIf2CardsAreSame(currentEnglishWord, list) {
-        return list.list.some((card) => card.ukName === currentEnglishWord);
+        return list.some((card) => card.ukName === currentEnglishWord);
     }
 }
