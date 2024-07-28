@@ -149,9 +149,7 @@ export class Controller {
             //this.currentWrongList = irregularVerbs;
 
         } else if (e.target.classList.contains("irregularVerbs")) {
-            this.currentWrongList = irregularVerbs;
-            this.modalAnswerUI.remove(".menu");
-
+            this.playLibrary(irregularVerbs);
         } else if (e.target.classList.contains("glass")) {
             this.modalAnswerUI.toggle(".modal_SearchBar");
 
@@ -185,32 +183,32 @@ export class Controller {
             this.all = false;
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
         } else if (e.target.classList.contains("animals")) {
-            this.switchDaily(animals);
+            this.playLibrary(animals);
         } else if (e.target.classList.contains("bedroom")) {
-            this.switchDaily(bedroom);
+            this.playLibrary(bedroom);
         } else if (e.target.classList.contains("clothing")) {
-            this.switchDaily(clothing);
+            this.playLibrary(clothing);
         } else if (e.target.classList.contains("kitchen")) {
-            this.switchDaily(kitchen);
+            this.playLibrary(kitchen);
         } else if (e.target.classList.contains("food")) {
-            this.switchDaily(food);
+            this.playLibrary(food);
         } else if (e.target.classList.contains("fruits")) {
-            this.switchDaily(fruit);
+            this.playLibrary(fruit);
         } else if (e.target.classList.contains("house")) {
-            this.switchDaily(house);
+            this.playLibrary(house);
         } else if (e.target.classList.contains("sport")) {
-            this.switchDaily(sport);
+            this.playLibrary(sport);
         } else if (e.target.classList.contains("transport")) {
-            this.switchDaily(transport);
+            this.playLibrary(transport);
         } else if (e.target.classList.contains("vegetables")) {
-            this.switchDaily(vegetable);
+            this.playLibrary(vegetable);
         }
     }
 
-    switchDaily(daily) {
+    playLibrary(name) {
         this.closeAllMenuModals();
         this.modalAnswerUI.remove(".menu");
-        this.currentWrongList = daily;
+        this.currentWrongList = name;
         this.cpt = 0;
         this.wrong = true;
         this.all = false;
