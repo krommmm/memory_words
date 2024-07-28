@@ -37,11 +37,12 @@ export class Cards extends ICards {
 
 
     initCards(list, wrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed) {
-
+        
         list = all ? list : wrongList;
         if (cpt === undefined) { // si on est arrivé à la fin du tableau (logique dans continues return)
             return;
         }
+    
         const res = progressBar.getInfoForPercentilConversion(cpt, list);
         progressBarUI.displayFraction(res);
         progressBarUI.displayPercentils(res);
@@ -94,5 +95,19 @@ export class Cards extends ICards {
         console.log(list);
         return list.list.some((card) => card.ukName === currentEnglishWord);
     }
+
+    // mixWordsRandomly() {
+    //     function shuffle(array) {
+    //         for (let i = array.length - 1; i > 0; i--) {
+    //             const j = Math.floor(Math.random() * (i + 1));
+    //             [array[i], array[j]] = [array[j], array[i]];
+    //         }
+    //         return array;
+    //     }
+    //     this.currentList = JSON.parse(JSON.stringify(this.list.list));
+    //     this.currentWrongList = JSON.parse(JSON.stringify(this.wrongList.wrongList));
+    //     this.currentList = shuffle(this.currentList);
+    //     this.currentWrongList = shuffle(this.currentWrongList);
+    // }
 
 }

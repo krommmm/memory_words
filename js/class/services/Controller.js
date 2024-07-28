@@ -28,7 +28,11 @@ export class Controller {
         this.cpt = 0;
         this.all = false;
         this.wrong = false;
-        this.isReversed = false;
+
+        this.isReversed = false; // les langues
+        this.isOrdered = true;
+        this.reversedSens = false;
+        this.shuffle = false;
     }
 
     init() {
@@ -43,7 +47,15 @@ export class Controller {
     }
 
     handleClicks(e) {
-        if (e.target.classList.contains("bars")) {
+        const optionsModal = document.querySelector(".optionsModal");
+     
+        if (e.target.classList.contains("bars") && optionsModal.classList.contains("hidden")) {
+            this.modalUI.close(".modal");
+            this.modalAnswerUI.close(".cardsContainer");
+            this.modalAnswerUI.add(".menu");
+            this.modalAnswerUI.remove(".optionsModal");
+            this.closeAllMenuModals();
+        } else if (e.target.classList.contains("bars")) {
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".cardsContainer");
             this.modalAnswerUI.toggle(".menu");
@@ -110,12 +122,6 @@ export class Controller {
             this.cards.deleteCard(id, this.list);
             this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
             this.list, this.wrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed
-        } else if (e.target.classList.contains("frUk")) {
-            this.beatHeart(e);
-            this.isReversed = false;
-        } else if (e.target.classList.contains("ukFr")) {
-            this.beatHeart(e);
-            this.isReversed = true;
         } else if (e.target.classList.contains("btn-next")) {
             this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
@@ -124,24 +130,6 @@ export class Controller {
             this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
         } else if (e.target.classList.contains("options")) {
-            this.modalAnswerUI.toggle(".optionsModal");
-
-        } else if (e.target.classList.contains("ordered")) {
-            this.modalAnswerUI.close(".optionsModal");
-            this.currentList = this.list.list;
-            this.currentWrongList = this.wrongList.wrongList;
-            this.modalAnswerUI.toggle(".optionsModal");
-
-        } else if (e.target.classList.contains("reversed")) {
-            this.modalAnswerUI.close(".optionsModal");
-            this.currentList = JSON.parse(JSON.stringify(this.list.list));
-            this.currentWrongList = JSON.parse(JSON.stringify(this.wrongList.wrongList));
-            this.currentList.reverse();
-            this.modalAnswerUI.toggle(".optionsModal");
-
-        } else if (e.target.classList.contains("shuffle")) {
-            this.mixWordsRandomly();
-            this.modalAnswerUI.close(".optionsModal");
             this.modalAnswerUI.toggle(".optionsModal");
 
         } else if (e.target.classList.contains("times")) {
@@ -166,14 +154,6 @@ export class Controller {
         } else if (e.target.classList.contains("dailyWords")) {
             this.modalAnswerUI.open(".vocabularyModal");
         } else if (e.target.classList.contains("animals")) {
-            this.closeAllMenuModals();
-            this.modalAnswerUI.remove(".menu");
-            this.currentWrongList = animals;
-            this.cpt = 0;
-            this.wrong = true;
-            this.all = false;
-            this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
-        } else if (e.target.classList.contains("animals")) {
             this.playLibrary(animals);
         } else if (e.target.classList.contains("bedroom")) {
             this.playLibrary(bedroom);
@@ -194,12 +174,72 @@ export class Controller {
         } else if (e.target.classList.contains("vegetables")) {
             this.playLibrary(vegetable);
         }
+        // options
+        else if (e.target.classList.contains("frUk")) {
+            this.isReversed = false;
+            this.removeAllOptionChecked();
+            e.target.classList.add("optionChecked");
+        } else if (e.target.classList.contains("ukFr")) {
+            this.isReversed = true;
+            this.removeAllOptionChecked();
+            e.target.classList.add("optionChecked");
+        }
+        else if (e.target.classList.contains("reversed")) {
+            this.isReversed = false;
+            this.isOrdered = false;
+            this.reversedSens = true;
+            this.shuffle = false;
+            this.removeAllOptionChecked();
+            e.target.classList.add("optionChecked");
+
+        } else if (e.target.classList.contains("ordered")) {
+            this.isReversed = false;
+            this.isOrdered = true;
+            this.reversedSens = false;
+            this.shuffle = false;
+            this.removeAllOptionChecked();
+            e.target.classList.add("optionChecked");
+        }
+        else if (e.target.classList.contains("shuffle")) {
+            this.isReversed = false;
+            this.isOrdered = false;
+            this.reversedSens = false;
+            this.shuffle = true;
+            this.removeAllOptionChecked();
+            e.target.classList.add("optionChecked");
+        }
+    }
+
+
+
+    removeAllOptionChecked() {
+        const btnOptions = document.querySelectorAll(".myOption").forEach((option) => option.classList.remove("optionChecked"));
+    }
+
+    reorderList() {
+        this.currentWrongList = this.currentWrongList.sort((a, b) => a.id - b.id);
+        this.currentList = this.currentList.sort((a, b) => a.id - b.id);
+    }
+
+
+
+    checkOptions() {
+        console.log(this.reversedSens);
+
+        if (this.isOrdered) {
+            this.reorderList();
+        } else if (this.shuffle) {
+            this.mixWordsRandomly();
+        } else if (this.reversedSens) {
+            this.currentWrongList = this.currentWrongList.reverse();
+        }
     }
 
     playLibrary(name) {
         this.closeAllMenuModals();
         this.modalAnswerUI.remove(".menu");
         this.currentWrongList = name;
+        this.checkOptions();
         this.cpt = 0;
         this.wrong = true;
         this.all = false;
@@ -259,8 +299,8 @@ export class Controller {
             }
             return array;
         }
-        this.currentList = JSON.parse(JSON.stringify(this.list.list));
-        this.currentWrongList = JSON.parse(JSON.stringify(this.wrongList.wrongList));
+        // this.currentList = JSON.parse(JSON.stringify(this.list.list));
+        // this.currentWrongList = JSON.parse(JSON.stringify(this.wrongList.wrongList));
         this.currentList = shuffle(this.currentList);
         this.currentWrongList = shuffle(this.currentWrongList);
     }
