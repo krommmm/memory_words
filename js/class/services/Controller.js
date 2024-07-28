@@ -9,6 +9,7 @@ import { house } from "../../data/house.js";
 import { sport } from "../../data/sport.js";
 import { transport } from "../../data/transport.js";
 import { vegetable } from "../../data/vegetable.js";
+import { times } from "../../data/times.js";
 
 export class Controller {
     constructor(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds, cards, cardsUI) {
@@ -144,10 +145,7 @@ export class Controller {
             this.modalAnswerUI.toggle(".optionsModal");
 
         } else if (e.target.classList.contains("times")) {
-            this.closeAllMenuModals();
-            this.modalAnswerUI.remove(".menu");
-            //this.currentWrongList = irregularVerbs;
-
+            this.playLibrary(times);
         } else if (e.target.classList.contains("irregularVerbs")) {
             this.playLibrary(irregularVerbs);
         } else if (e.target.classList.contains("glass")) {
@@ -167,13 +165,6 @@ export class Controller {
 
         } else if (e.target.classList.contains("dailyWords")) {
             this.modalAnswerUI.open(".vocabularyModal");
-
-        } else if (e.target.classList.contains("irregularVerbs")) {
-            // launch irregular verbs
-
-        } else if (e.target.classList.contains("times")) {
-            // launch times
-
         } else if (e.target.classList.contains("animals")) {
             this.closeAllMenuModals();
             this.modalAnswerUI.remove(".menu");
