@@ -29,10 +29,8 @@ export class Cards extends ICards {
         modalUI.cleanInputs();
     }
 
-    deleteCard(e, list) {
+    deleteCard(id, list) {
         if (confirm("Would you like delete this word")) {
-            const container = e.target.closest(".cardsContainer");
-            const id = container.dataset.id;
             list.deleteWord(id);
         }
     }
@@ -96,4 +94,5 @@ export class Cards extends ICards {
         console.log(list);
         return list.list.some((card) => card.ukName === currentEnglishWord);
     }
+
 }

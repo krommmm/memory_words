@@ -41,53 +41,6 @@
     width: 120px;
 }
 
-/* OPTION MODAL */
-.optionsModal {
-    display: none;
-    flex-direction: column;
-    padding: 15px;
-    background-color: white;
-    position: absolute;
-    width: 95vw;
-    height: 100vh;
-    position: relative;
-    z-index: 99999;
-}
-
-.optionsModal__options {
-    display: flex;
-    flex-direction: column;
-}
-
-.optionsModal--title {
-    font-weight: 600;
-    font-size: 20px;
-    font-family: cursive;
-    margin-bottom: 15px;
-}
-
-.btnOptions {
-    border: 2px solid rgba(0, 0, 0, .1);
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-}
-
-.optionsModal .btn {
-    margin-right: 10px;
-}
-
-.modal {
-    transform: translateY(-1053px);
-    transition-duration: .4s;
-    padding: 20px;
-    width: 400px;
-    margin: auto;
-    background-color: white;
-    z-index: 9999;
-    position: absolute;
-    left: 40%;
-}
 
 /* ADDING WORDS MODAL */
 .addingWordsModal {
@@ -132,4 +85,152 @@
     border-top-right-radius: 15px;
     border-bottom-left-radius: 5px;
     float: right;
+}
+
+
+/* MODAL SEARCH BAR */
+.modal_SearchBar {
+    display: none;
+    transform: translateY(200px);
+    background-color: white;
+    border: 1px solid black;
+    padding: 15px;
+    position: absolute;
+    z-index: 9999999999;
+    left: 25%;
+}
+
+/* MODAL CARD HANDLE */
+.CardHandle {
+    display: none;
+    flex-direction: column;
+    transform: translateY(200px);
+    background-color: white;
+    border: 1px solid black;
+    /* padding: 15px; */
+    position: absolute;
+    z-index: 9999999999;
+    width: 95vw;
+}
+
+.CardHandle__menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.CardHandle__menu__words {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0px;
+}
+
+.CardHandle__menu__words p {
+    margin: 15px 0px;
+}
+
+.CardHandle__operations {
+    display: flex;
+    justify-content: center;
+}
+
+.CardHandle__operations p {
+    margin-right: 15px;
+}
+
+/* OPTION MODAL */
+.optionsModal {
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    background-color: white;
+    position: absolute;
+    width: 95vw;
+    height: 100vh;
+    position: relative;
+    z-index: 99999;
+}
+
+.optionsModal__options {
+    display: flex;
+    flex-direction: column;
+}
+
+.optionsModal--title {
+    font-weight: 600;
+    font-size: 20px;
+    font-family: cursive;
+    margin-bottom: 15px;
+}
+
+.btnOptions {
+    border: 2px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.optionsModal .btn {
+    margin-right: 10px;
+}
+
+.modal {
+    transform: translateY(-1053px);
+    transition-duration: .4s;
+    padding: 20px;
+    width: 400px;
+    margin: auto;
+    background-color: white;
+    z-index: 9999;
+    position: absolute;
+    left: 40%;
+}
+
+/* USER MODAL */
+.userModal {
+    position: absolute;
+    display: none;
+    flex-wrap: wrap;
+    padding-top: 25px;
+    background-color: white;
+    width: 100%;
+    padding-bottom: 600px;
+    margin: 0px;
+    padding-left: 15px;
+    height: 700px;
+    left: 0px;
+}
+
+.iconDrew {
+    color: white !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-weight: 600;
+}
+.drewBlue{
+    background-color: rgb(16,81,179);
+}
+.drewGreen{
+    background-color: rgb(16,132,68);
+}
+
+
+/* VOCABULARY MODAL */
+.vocabularyModal {
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    background-color: white;
+    position: absolute;
+    width: 95vw;
+    height: 100vh;
+    position: relative;
+    z-index: 99999;
+    position:absolute;
+    left: 0px;
 }
