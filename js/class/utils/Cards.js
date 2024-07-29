@@ -53,6 +53,7 @@ export class Cards extends ICards {
         progressBarUI.displayPercentils(res);
         document.querySelector(".cardsContainer").classList.add("rightToLeft");
         const cardContainer = document.querySelector(".cardsContainer");
+
         cardContainer.setAttribute("data-id", list[cpt].id);
         modalAnswerUI.open(".cardsContainer");
         if (isReversed) {
@@ -79,10 +80,10 @@ export class Cards extends ICards {
         return cpt;
     }
 
-    addCardInWrongList(e, list, wrongList, currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed) {
+    addCardInWrongList(e, list, allLibraries, wrongList, currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed) {
         let id = parseInt(e.target.closest(".cardsContainer").dataset.id);
-        const card = list.find(card => parseInt(card.id) === id);
-
+        const card = allLibraries.find(card => parseInt(card.id) === id);;
+        // rajouter les categories
         if (wrongList.wrongList.some((card) => card.id === id)) {
             cpt = this.continues(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed);
             this.initCards(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
@@ -92,6 +93,7 @@ export class Cards extends ICards {
             wrongList.addWord(card);
             cpt = this.continues(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed);
             this.initCards(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
+
         }
     }
 

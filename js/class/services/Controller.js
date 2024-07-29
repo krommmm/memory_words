@@ -10,6 +10,8 @@ import { sport } from "../../data/sport.js";
 import { transport } from "../../data/transport.js";
 import { vegetable } from "../../data/vegetable.js";
 import { times } from "../../data/times.js";
+import { places } from "../../data/places.js";
+import { city } from "../../data/city.js";
 
 export class Controller {
     constructor(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds, cards, cardsUI) {
@@ -34,12 +36,15 @@ export class Controller {
         this.isOrdered = true;
         this.reversedSens = false;
         this.shuffle = false;
+
+        // all libraries
+        this.allLibraries = [...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city];
     }
 
     init() {
-        this.bindEvents();
         this.currentList = this.list.list;
         this.currentWrongList = this.wrongList.wrongList;
+        this.bindEvents();
     }
 
     bindEvents() {
@@ -76,8 +81,11 @@ export class Controller {
                 this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
                 this.cards.initCards(this.currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
             } else {
-                this.cards.addCardInWrongList(e, this.list.list, this.wrongList, this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+                this.cards.addCardInWrongList(e, this.list.list,this.allLibraries, this.wrongList, this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+               
             }
+            this.currentWrongList = JSON.parse(localStorage.getItem("wrongWords"));
+            
         } else if (e.target.classList.contains("btn-yes")) {
             this.sounds.success();
             this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
@@ -98,6 +106,7 @@ export class Controller {
             this.deleteWrongCard(e);
             this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
+            this.currentWrongList = JSON.parse(localStorage.getItem("wrongWords"));
         } else if (e.target.classList.contains("options")) {
             this.modalAnswerUI.toggle(".optionsModal");
 
@@ -144,6 +153,10 @@ export class Controller {
             this.playLibrary(transport);
         } else if (e.target.classList.contains("vegetables")) {
             this.playLibrary(vegetable);
+        } else if (e.target.classList.contains("places")) {
+            this.playLibrary(places);
+        } else if (e.target.classList.contains("city")) {
+            this.playLibrary(city);
         }
         // options
         else if (e.target.classList.contains("frUk")) {
@@ -244,8 +257,6 @@ export class Controller {
 
 
     checkOptions() {
-        console.log(this.reversedSens);
-
         if (this.isOrdered) {
             this.reorderList();
         } else if (this.shuffle) {
@@ -258,11 +269,11 @@ export class Controller {
     playLibrary(name) {
         this.closeAllMenuModals();
         this.modalAnswerUI.remove(".menu");
-        this.currentWrongList = name;
+        this.currentList = name;
         this.checkOptions();
         this.cpt = 0;
-        this.wrong = true;
-        this.all = false;
+        this.wrong = false;
+        this.all = true;
         this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
     }
 
@@ -330,7 +341,7 @@ export class Controller {
 
         if (this.isReversed) {
             document.querySelector(".word").textContent = array.find(card => parseInt(card.id) === parseInt(id)).frName;
-      
+
         } else {
             document.querySelector(".word").textContent = array.find(card => parseInt(card.id) === parseInt(id)).ukName;
             document.querySelector(".oldWord").textContent = array.find(card => parseInt(card.id) === parseInt(id)).frName + "*";
