@@ -125,6 +125,7 @@
         <h1>How do you say this in english ?</h1>
         <div class="card">
             <p class="word">ex beurre</p>
+            <p class="oldWord"></p>
         </div>
         <div class="modalAnswer">
             <div class="modalAnswer__top">
@@ -148,7 +149,13 @@
                 <div class="exitModal add-arrondi redBtn">Exit</div>
             </div>
 
-            <p>Add a word</p>
+            <div>
+                <p>Add</p>
+                <select class="typeModal">
+                    <option value="word">Word</option>
+                    <option value="phrase">Phrase</option>
+                </select>
+            </div>
             <div class="input_words">
                 <input type="text" class="frWord" placeholder="fr" />
                 <input type="text" class="ukWord" placeholder="uk" />

@@ -10,6 +10,9 @@ export class Cards extends ICards {
         const wordsContainer = e.target.closest(".addingWordsModal");
         const frWord = wordsContainer.querySelector(".frWord");
         const ukWord = wordsContainer.querySelector(".ukWord");
+        const typeModal = document.querySelector(".typeModal").value;
+
+
 
         const doesThisWordAlreadyExists = this.checkIf2CardsAreSame(ukWord.value, list);
         if (doesThisWordAlreadyExists) {
@@ -20,7 +23,8 @@ export class Cards extends ICards {
         const card = {
             id: this.id,
             frName: frWord.value,
-            ukName: ukWord.value
+            ukName: ukWord.value,
+            type: typeModal
         }
         list.addWord(card);
 
@@ -30,6 +34,7 @@ export class Cards extends ICards {
     }
 
     deleteCard(id, list) {
+
         if (confirm("Would you like delete this word")) {
             list.deleteWord(id);
         }
@@ -37,12 +42,12 @@ export class Cards extends ICards {
 
 
     initCards(list, wrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed) {
-        
+
         list = all ? list : wrongList;
         if (cpt === undefined) { // si on est arrivé à la fin du tableau (logique dans continues return)
             return;
         }
-    
+
         const res = progressBar.getInfoForPercentilConversion(cpt, list);
         progressBarUI.displayFraction(res);
         progressBarUI.displayPercentils(res);
@@ -87,13 +92,12 @@ export class Cards extends ICards {
             cpt = this.continues(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed);
             this.initCards(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
         }
-
-
     }
 
     checkIf2CardsAreSame(currentEnglishWord, list) {
-        console.log(list);
+
         return list.list.some((card) => card.ukName === currentEnglishWord);
+
     }
 
     // mixWordsRandomly() {
