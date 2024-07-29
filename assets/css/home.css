@@ -27,7 +27,7 @@
     width: 200px;
     height: 200px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     border: 1px solid black;
     border-radius: 9px;
@@ -37,6 +37,18 @@
     background: linear-gradient(191deg, rgba(1, 67, 117, 1) 15%, rgba(147, 191, 246, 1) 100%);
     color: white;
     font-weight: 600;
+    flex-direction: column;
+}
+
+.word {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.oldWord {
+    margin-top: 15px;
+    font-size: 14px;
+    font-family: italic;
 }
 
 .word {
@@ -191,11 +203,11 @@ h1 {
 
 .background p {
     margin-top: 22px;
-    font-size:12px;
+    font-size: 12px;
 }
 
 @media screen and (max-width:735px) {
- 
+
 
     body .delete,
     body .deleteWrong {

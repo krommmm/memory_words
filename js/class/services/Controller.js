@@ -72,7 +72,6 @@ export class Controller {
             }
         } else if (e.target.classList.contains("btn-no")) {
             this.sounds.faill();
-
             if (this.wrong === true) {
                 this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
                 this.cards.initCards(this.currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
@@ -123,7 +122,9 @@ export class Controller {
 
         } else if (e.target.classList.contains("dailyWords")) {
             this.modalAnswerUI.open(".vocabularyModal");
-        } else if (e.target.classList.contains("animals")) {
+        }
+        // category models
+        else if (e.target.classList.contains("animals")) {
             this.playLibrary(animals);
         } else if (e.target.classList.contains("bedroom")) {
             this.playLibrary(bedroom);
@@ -181,7 +182,7 @@ export class Controller {
         // user
         else if (e.target.classList.contains("userModal__words")) {
             this.closeUserMenu();
-            this.currentList = this.list.list.filter((card)=>card.type==="word");
+            this.currentList = this.list.list.filter((card) => card.type === "word");
             this.cpt = 0;
             this.all = true;
             this.wrong = false;
@@ -190,7 +191,7 @@ export class Controller {
         }
         else if (e.target.classList.contains("userModal__phrases")) {
             this.closeUserMenu();
-            this.currentList = this.list.list.filter((card)=>card.type==="phrase");
+            this.currentList = this.list.list.filter((card) => card.type === "phrase");
             this.cpt = 0;
             this.all = true;
             this.wrong = false;
@@ -326,11 +327,13 @@ export class Controller {
     translate(e, array) {
         document.querySelector(".cardsContainer").classList.remove("rightToLeft");
         let id = e.target.closest(".cardsContainer").dataset.id;
-        
+
         if (this.isReversed) {
             document.querySelector(".word").textContent = array.find(card => parseInt(card.id) === parseInt(id)).frName;
+      
         } else {
             document.querySelector(".word").textContent = array.find(card => parseInt(card.id) === parseInt(id)).ukName;
+            document.querySelector(".oldWord").textContent = array.find(card => parseInt(card.id) === parseInt(id)).frName + "*";
         }
         this.sounds.pass();
     }

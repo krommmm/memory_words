@@ -47,7 +47,7 @@ export class Cards extends ICards {
         if (cpt === undefined) { // si on est arrivé à la fin du tableau (logique dans continues return)
             return;
         }
-
+        document.querySelector(".oldWord").textContent = "";
         const res = progressBar.getInfoForPercentilConversion(cpt, list);
         progressBarUI.displayFraction(res);
         progressBarUI.displayPercentils(res);
@@ -68,6 +68,7 @@ export class Cards extends ICards {
         modalAnswerUI.close(".modalAnswerWrong");
         list = all ? list : wrongList;
 
+        document.querySelector(".oldWord").textContent = "";
         if (list.length - 1 <= cpt) {
             wrong = false;
             all = false;
