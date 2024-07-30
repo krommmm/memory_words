@@ -200,6 +200,7 @@ export class Controller {
             this.all = true;
             this.wrong = false;
             if (this.list.list.length <= 0) { return; }
+            this.checkOptions();
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
         }
         else if (e.target.classList.contains("userModal__phrases")) {
@@ -209,6 +210,7 @@ export class Controller {
             this.all = true;
             this.wrong = false;
             if (this.list.list.length <= 0) { return; }
+            this.checkOptions();
             this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
         }
         else if (e.target.classList.contains("add-word")) {
@@ -260,9 +262,12 @@ export class Controller {
         if (this.isOrdered) {
             this.reorderList();
         } else if (this.shuffle) {
+            this.reorderList();
             this.mixWordsRandomly();
         } else if (this.reversedSens) {
+            this.reorderList();
             this.currentWrongList = this.currentWrongList.reverse();
+            this.currentList = this.currentList.reverse();
         }
     }
 
@@ -341,6 +346,7 @@ export class Controller {
 
         if (this.isReversed) {
             document.querySelector(".word").textContent = array.find(card => parseInt(card.id) === parseInt(id)).frName;
+            document.querySelector(".oldWord").textContent = array.find(card => parseInt(card.id) === parseInt(id)).ukName + "*";
 
         } else {
             document.querySelector(".word").textContent = array.find(card => parseInt(card.id) === parseInt(id)).ukName;
