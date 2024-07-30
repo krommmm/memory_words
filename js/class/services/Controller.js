@@ -12,6 +12,7 @@ import { vegetable } from "../../data/vegetable.js";
 import { times } from "../../data/times.js";
 import { places } from "../../data/places.js";
 import { city } from "../../data/city.js";
+import { orientation } from "../../data/orientation.js";
 
 export class Controller {
     constructor(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds, cards, cardsUI) {
@@ -38,7 +39,7 @@ export class Controller {
         this.shuffle = false;
 
         // all libraries
-        this.allLibraries = [...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city];
+        this.allLibraries = [...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city, ...orientation];
     }
 
     init() {
@@ -81,11 +82,11 @@ export class Controller {
                 this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
                 this.cards.initCards(this.currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
             } else {
-                this.cards.addCardInWrongList(e, this.list.list,this.allLibraries, this.wrongList, this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
-               
+                this.cards.addCardInWrongList(e, this.list.list, this.allLibraries, this.wrongList, this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
+
             }
             this.currentWrongList = JSON.parse(localStorage.getItem("wrongWords"));
-            
+
         } else if (e.target.classList.contains("btn-yes")) {
             this.sounds.success();
             this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
@@ -128,7 +129,6 @@ export class Controller {
             this.currentList = this.list.list;
         } else if (e.target.classList.contains("user")) {
             this.modalAnswerUI.open(".userModal");
-
         } else if (e.target.classList.contains("dailyWords")) {
             this.modalAnswerUI.open(".vocabularyModal");
         }
@@ -157,6 +157,8 @@ export class Controller {
             this.playLibrary(places);
         } else if (e.target.classList.contains("city")) {
             this.playLibrary(city);
+        }else if(e.target.classList.contains("orientation")){
+            this.playLibrary(orientation);
         }
         // options
         else if (e.target.classList.contains("frUk")) {
@@ -334,8 +336,6 @@ export class Controller {
             }
             return array;
         }
-        // this.currentList = JSON.parse(JSON.stringify(this.list.list));
-        // this.currentWrongList = JSON.parse(JSON.stringify(this.wrongList.wrongList));
         this.currentList = shuffle(this.currentList);
         this.currentWrongList = shuffle(this.currentWrongList);
     }
@@ -354,18 +354,4 @@ export class Controller {
         }
         this.sounds.pass();
     }
-
-    // addCardInWrongList(e) {
-    //     let id = parseInt(e.target.closest(".cardsContainer").dataset.id);
-    //     const card = this.list.list.find(card => parseInt(card.id) === id);
-    //     if (this.wrongList.wrongList.includes(card)) {
-    //         this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
-    //         this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
-    //         return;
-    //     }
-    //     this.wrongList.addWord(card);
-    //     this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
-    //     this.cards.initCards(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.isReversed);
-    // }
-
 }

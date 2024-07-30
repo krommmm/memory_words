@@ -7,7 +7,7 @@ export const kitchen = [
     { "id": 8005, "frName": "tasse", "ukName": "cup" },
     { "id": 8006, "frName": "bol", "ukName": "bowl" },
     { "id": 8007, "frName": "poêle", "ukName": "frying pan" },
-    { "id": 8008, "frName": "casserole", "ukName": "pot" },
+    { "id": 8008, "frName": " grosse casserole à 2 poignets", "ukName": "pot" },
     { "id": 8009, "frName": "planche à découper", "ukName": "cutting board" },
     { "id": 8010, "frName": "mixeur", "ukName": "blender" },
     { "id": 8011, "frName": "batteur", "ukName": "mixer" },
@@ -46,7 +46,7 @@ export const kitchen = [
     { "id": 8044, "frName": "pince", "ukName": "tongs" },
     { "id": 8045, "frName": "rouleau à pâtisserie", "ukName": "rolling pin" },
     { "id": 8046, "frName": "thermomètre de cuisine", "ukName": "kitchen thermometer" },
-    { "id": 8047, "frName": "casserole", "ukName": "saucepan" },
+    { "id": 8047, "frName": "casserole normal", "ukName": "saucepan" },
     { "id": 8048, "frName": "cocotte-minute", "ukName": "pressure cooker" },
     { "id": 8049, "frName": "sous-plat", "ukName": "trivet" }
 ];
