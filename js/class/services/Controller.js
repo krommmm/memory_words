@@ -39,7 +39,7 @@ export class Controller {
         this.shuffle = false;
 
         // all libraries
-        this.allLibraries = [...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city, ...orientation];
+        this.allLibraries = [...this.list.list, ...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city, ...orientation];
     }
 
     init() {

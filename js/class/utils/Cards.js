@@ -82,7 +82,9 @@ export class Cards extends ICards {
 
     addCardInWrongList(e, list, allLibraries, wrongList, currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed) {
         let id = parseInt(e.target.closest(".cardsContainer").dataset.id);
-        const card = allLibraries.find(card => parseInt(card.id) === id);;
+        const card = allLibraries.find(card => parseInt(card.id) === id);
+        console.log(id);
+        console.log(allLibraries);
         // rajouter les categories
         if (wrongList.wrongList.some((card) => card.id === id)) {
             cpt = this.continues(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed);
