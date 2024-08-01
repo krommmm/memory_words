@@ -93,7 +93,6 @@ export class Cards extends ICards {
             wrongList.addWord(card);
             cpt = this.continues(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, wrong, isReversed);
             this.initCards(currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
-
         }
     }
 

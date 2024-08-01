@@ -26,7 +26,7 @@ export const house = [
     { "id": 9074, "frName": "cheminée", "ukName": "fireplace" },
     { "id": 9075, "frName": "climatiseur", "ukName": "air conditioner" },
     { "id": 9076, "frName": "chauffage", "ukName": "heater" },
-    { "id": 9077, "frName": "radiateur", "ukName": "radiator" },
+    { "id": 9077, "frName": "radiateur", "ukName": "heater" },
     { "id": 9078, "frName": "lampe", "ukName": "lamp" },
     { "id": 9079, "frName": "lit", "ukName": "bed" },
     { "id": 9080, "frName": "table", "ukName": "table" },
