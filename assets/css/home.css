@@ -39,6 +39,9 @@
     font-weight: 600;
     flex-direction: column;
 }
+.typeModal{
+    padding : 5px;
+}
 
 .word {
     margin-top: 50px;
