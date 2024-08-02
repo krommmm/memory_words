@@ -13,6 +13,17 @@ import { times } from "../../data/times.js";
 import { places } from "../../data/places.js";
 import { city } from "../../data/city.js";
 import { orientation } from "../../data/orientation.js";
+import { connectives } from "../../data/connectives.js"
+import { vegetation } from "../../data/vegetation.js";
+import { work } from "../../data/work.js";
+import { bodyParts } from "../../data/bodyParts.js";
+import { weather } from "../../data/weather.js";
+import { emotions } from "../../data/emotions.js";
+import { education } from "../../data/education.js";
+import { travel } from "../../data/travel.js";
+import { arts } from "../../data/arts.js";
+import { entertainment } from "../../data/entertainment.js";
+import { cinema } from "../../data/cinema.js";
 
 export class Controller {
     constructor(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds, cards, cardsUI) {
@@ -29,7 +40,7 @@ export class Controller {
         this.cardsUI = cardsUI;
         this.init();
         this.cpt = 0;
-        this.all = false;
+        this.all = false; 
         this.wrong = false;
 
         // options
@@ -39,7 +50,7 @@ export class Controller {
         this.shuffle = false;
 
         // all libraries
-        this.allLibraries = [...this.list.list, ...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city, ...orientation];
+        this.allLibraries = [...this.list.list, ...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city, ...orientation, ...connectives, ...vegetation, ...work, ...bodyParts, ...weather, ...emotions, ...education, ...travel, ...arts, ...entertainment, ...cinema];
     }
 
     init() {
@@ -160,6 +171,41 @@ export class Controller {
         }else if(e.target.classList.contains("orientation")){
             this.playLibrary(orientation);
         }
+
+        else if(e.target.classList.contains("connectives")){
+            this.playLibrary(connectives);
+        }
+        else if(e.target.classList.contains("vegetation")){
+            this.playLibrary(vegetation);
+        }
+        else if(e.target.classList.contains("work")){
+            this.playLibrary(work);
+        }
+        else if(e.target.classList.contains("bodyParts")){
+            this.playLibrary(bodyParts);
+        }
+        else if(e.target.classList.contains("weather")){
+            this.playLibrary(weather);
+        }
+        else if(e.target.classList.contains("emotions")){
+            this.playLibrary(emotions);
+        }
+        else if(e.target.classList.contains("education")){
+            this.playLibrary(education);
+        }
+        else if(e.target.classList.contains("travel")){
+            this.playLibrary(travel);
+        }
+        else if(e.target.classList.contains("arts")){
+            this.playLibrary(arts);
+        }
+        else if(e.target.classList.contains("entertainment")){
+            this.playLibrary(entertainment);
+        }
+        else if(e.target.classList.contains("cinema")){
+            this.playLibrary(cinema);
+        }
+       
         // options
         else if (e.target.classList.contains("frUk")) {
             this.isReversed = false;
