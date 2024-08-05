@@ -1,5 +1,5 @@
 export const house = [
-    { "id": 9050, "frName": "maison", "ukName": "house" },
+    { "id": 9050, "frName": "canapé", "ukName": "Couch" },
     { "id": 9051, "frName": "appartement", "ukName": "apartment" },
     { "id": 9052, "frName": "salon", "ukName": "living room" },
     { "id": 9053, "frName": "cuisine", "ukName": "kitchen" },
