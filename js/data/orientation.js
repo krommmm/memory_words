@@ -3,7 +3,7 @@ export const orientation = [
     { "id": 13300, "frName": "au-dessus de (statique ou abstraction)", "ukName": "above" },
     { "id": 13301, "frName": "au-dessus (rang/mouvement/couverture)", "ukName": "over" },
     { "id": 13302, "frName": "au-dessus de la tête", "ukName": "overhead" },
-    { "id": 13303, "frName": "au-dessous", "ukName": "beneath" },
+    { "id": 13303, "frName": "au-dessous (notion de profondeur)", "ukName": "beneath" },
     { "id": 13304, "frName": "en dessous de (Position Relativement à un Niveau/valeurs/quantité)", "ukName": "below" },
     { "id": 13305, "frName": "en dessous(couvrir/protection)", "ukName": "underneath" },
 
@@ -41,8 +41,8 @@ export const orientation = [
     { "id": 13328, "frName": "tout en bas", "ukName": "at the very bottom" },
 
     // Centre / Milieu
-    { "id": 13329, "frName": "au centre de", "ukName": "in the center of" },
-    { "id": 13330, "frName": "au centre", "ukName": "in the middle" },
+    { "id": 13329, "frName": "au centre de (cercle)", "ukName": "in the center of" },
+    { "id": 13330, "frName": "au centre (plane)", "ukName": "in the middle" },
     { "id": 13331, "frName": "au milieu de", "ukName": "in the middle of" },
     { "id": 13332, "frName": "au milieu", "ukName": "amid" },
 
