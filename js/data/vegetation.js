@@ -61,13 +61,5 @@ export const vegetation = [
     { "id": 13509, "frName": "observer", "ukName": "to observe" },
     { "id": 13510, "frName": "fleurir", "ukName": "to bloom" },
     { "id": 13511, "frName": "bêcher", "ukName": "to till" },
-    { "id": 13512, "frName": "détruire", "ukName": "to destroy" },
-    { "id": 13513, "frName": "réparer", "ukName": "to repair" },
-    { "id": 13514, "frName": "réussir", "ukName": "to succeed" },
-    { "id": 13515, "frName": "aérer", "ukName": "to aerate" },
-    { "id": 13516, "frName": "développer", "ukName": "to develop" },
-    { "id": 13517, "frName": "conserver", "ukName": "to conserve" },
-    { "id": 13518, "frName": "multiplier", "ukName": "to multiply" },
-    { "id": 13519, "frName": "polliniser", "ukName": "to pollinate" },
-    { "id": 13520, "frName": "entretenir", "ukName": "to maintain" }
+
 ];
