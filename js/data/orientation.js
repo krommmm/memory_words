@@ -23,13 +23,11 @@ export const orientation = [
 
     // Autour / À côté de
     { "id": 13316, "frName": "autour de", "ukName": "around" },
-    { "id": 13317, "frName": "à côté de", "ukName": "next to" },
-    { "id": 13318, "frName": "à côté", "ukName": "beside" },
+    { "id": 13317, "frName": "à côté de (formal,unformal)", "ukName": "beside / next to" },
 
     // En face / Derrière
-    { "id": 13319, "frName": "en face de", "ukName": "opposite" },
+    { "id": 13319, "frName": "en face de (par raport/just en face)", "ukName": "opposite / in front" },
     { "id": 13320, "frName": "derrière", "ukName": "behind" },
-    { "id": 13321, "frName": "en face", "ukName": "in front" },
 
     // Haut / Bas
     { "id": 13322, "frName": "en haut", "ukName": "up" },
