@@ -1,6 +1,7 @@
 export const house = [
     { "id": 9050, "frName": "canapé", "ukName": "Couch" },
-    { "id": 9051, "frName": "appartement", "ukName": "apartment" },
+    { "id": 9051, "frName": "fauteuil", "ukName": "armchair" },
+    { "id": 9082, "frName": "appartement", "ukName": "apartment" },
     { "id": 9052, "frName": "salon", "ukName": "living room" },
     { "id": 9053, "frName": "cuisine", "ukName": "kitchen" },
     { "id": 9054, "frName": "chambre", "ukName": "bedroom" },
@@ -31,7 +32,6 @@ export const house = [
     { "id": 9079, "frName": "lit", "ukName": "bed" },
     { "id": 9080, "frName": "table", "ukName": "table" },
     { "id": 9081, "frName": "chaise", "ukName": "chair" },
-    { "id": 9082, "frName": "canapé", "ukName": "sofa" },
     { "id": 9083, "frName": "étagère", "ukName": "shelf" },
     { "id": 9084, "frName": "armoire", "ukName": "wardrobe" },
     { "id": 9085, "frName": "commode", "ukName": "chest of drawers" },
