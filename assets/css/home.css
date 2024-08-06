@@ -218,6 +218,10 @@ h1 {
     body .deleteWrong {
         width: 30px;
     }
+    body .CardHandle{
+        width: 85%;
+        left: 7%;
+    }
 
     body .modalAnswer {
         margin-top: 25px;

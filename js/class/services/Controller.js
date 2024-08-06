@@ -40,7 +40,7 @@ export class Controller {
         this.cardsUI = cardsUI;
         this.init();
         this.cpt = 0;
-        this.all = false; 
+        this.all = false;
         this.wrong = false;
 
         // options
@@ -129,7 +129,10 @@ export class Controller {
         } else if (e.target.classList.contains("glass")) {
             this.modalAnswerUI.toggle(".modal_SearchBar");
 
-        } else if (e.target.classList.contains("CardHandle__menu--close")) {
+        } else if (e.target.classList.contains("searchBar__exit")) {
+            this.modalAnswerUI.remove(".modal_SearchBar");
+        } 
+        else if (e.target.classList.contains("CardHandle__menu--close")) {
             this.modalAnswerUI.remove(".modal_SearchBar");
             this.modalAnswerUI.close(".CardHandle");
         } else if (e.target.classList.contains("CardHandle__operations--delete")) {
@@ -168,44 +171,44 @@ export class Controller {
             this.playLibrary(places);
         } else if (e.target.classList.contains("city")) {
             this.playLibrary(city);
-        }else if(e.target.classList.contains("orientation")){
+        } else if (e.target.classList.contains("orientation")) {
             this.playLibrary(orientation);
         }
 
-        else if(e.target.classList.contains("connectives")){
+        else if (e.target.classList.contains("connectives")) {
             this.playLibrary(connectives);
         }
-        else if(e.target.classList.contains("vegetation")){
+        else if (e.target.classList.contains("vegetation")) {
             this.playLibrary(vegetation);
         }
-        else if(e.target.classList.contains("work")){
+        else if (e.target.classList.contains("work")) {
             this.playLibrary(work);
         }
-        else if(e.target.classList.contains("bodyParts")){
+        else if (e.target.classList.contains("bodyParts")) {
             this.playLibrary(bodyParts);
         }
-        else if(e.target.classList.contains("weather")){
+        else if (e.target.classList.contains("weather")) {
             this.playLibrary(weather);
         }
-        else if(e.target.classList.contains("emotions")){
+        else if (e.target.classList.contains("emotions")) {
             this.playLibrary(emotions);
         }
-        else if(e.target.classList.contains("education")){
+        else if (e.target.classList.contains("education")) {
             this.playLibrary(education);
         }
-        else if(e.target.classList.contains("travel")){
+        else if (e.target.classList.contains("travel")) {
             this.playLibrary(travel);
         }
-        else if(e.target.classList.contains("arts")){
+        else if (e.target.classList.contains("arts")) {
             this.playLibrary(arts);
         }
-        else if(e.target.classList.contains("entertainment")){
+        else if (e.target.classList.contains("entertainment")) {
             this.playLibrary(entertainment);
         }
-        else if(e.target.classList.contains("cinema")){
+        else if (e.target.classList.contains("cinema")) {
             this.playLibrary(cinema);
         }
-       
+
         // options
         else if (e.target.classList.contains("frUk")) {
             this.isReversed = false;

@@ -94,10 +94,10 @@
     transform: translateY(200px);
     background-color: white;
     border: 1px solid black;
-    padding: 15px;
     position: absolute;
     z-index: 9999999999;
     left: 25%;
+    flex-direction: column;
 }
 
 /* MODAL CARD HANDLE */
@@ -110,7 +110,32 @@
     /* padding: 15px; */
     position: absolute;
     z-index: 9999999999;
-    width: 95vw;
+    width: 350px;
+    height: 400px;
+    left: 30%;
+}
+
+.modal_SearchBar__exit {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.searchBar__exit {
+    padding: 5px;
+    background-color: red;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.modal_SearchBar__title {
+    margin: 15px;
+    font-weight:600;
+}
+
+.modal_SearchBar input {
+    margin: 10px;
 }
 
 .CardHandle__menu {
@@ -212,11 +237,13 @@
     height: 50px;
     font-weight: 600;
 }
-.drewBlue{
-    background-color: rgb(16,81,179);
+
+.drewBlue {
+    background-color: rgb(16, 81, 179);
 }
-.drewGreen{
-    background-color: rgb(16,132,68);
+
+.drewGreen {
+    background-color: rgb(16, 132, 68);
 }
 
 
@@ -231,6 +258,6 @@
     height: 100vh;
     position: relative;
     z-index: 99999;
-    position:absolute;
+    position: absolute;
     left: 0px;
 }
