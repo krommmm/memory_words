@@ -27,6 +27,9 @@ export const orientation = [
 
     // En face / Derrière
     { "id": 13319, "frName": "en face de (par raport/just en face)", "ukName": "opposite / in front" },
+    { "id": 13342, "frName": "devant", "ukName": "in front of" },
+    { "id": 13339, "frName": "à l'avant de", "ukName": "at the front of" },
+    { "id": 13340, "frName": "à l'arrière de", "ukName": "at the back of" },
     { "id": 13320, "frName": "derrière", "ukName": "behind" },
 
     // Haut / Bas
@@ -54,13 +57,11 @@ export const orientation = [
     { "id": 13337, "frName": "vers l'avant", "ukName": "forward" },
     { "id": 13338, "frName": "vers l'arrière", "ukName": "backward" },
 
-    // Front / Arrière
-    { "id": 13339, "frName": "à l'avant de", "ukName": "at the front of" },
-    { "id": 13340, "frName": "à l'arrière de", "ukName": "at the back of" },
+
 
     // Autres
     { "id": 13341, "frName": "tout droit", "ukName": "straight ahead" },
-    { "id": 13342, "frName": "devant", "ukName": "in front of" },
+
     { "id": 13343, "frName": "entre", "ukName": "between" },
     { "id": 13344, "frName": "sur", "ukName": "on" },
     { "id": 13345, "frName": "sous", "ukName": "under" },
