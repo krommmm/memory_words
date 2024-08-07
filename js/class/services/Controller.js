@@ -393,36 +393,18 @@ export class Controller {
         document.querySelector(".cardsContainer").classList.remove("rightToLeft");
         let id = e.target.closest(".cardsContainer").dataset.id;
 
-                     // sound : 
-                     function speak(text) {
-                        // Récupérer le texte depuis l'input
-           
-            
-                        // Vérifier si le navigateur supporte l'API Web Speech
-                        if ('speechSynthesis' in window) {
-                            // Créer une instance de SpeechSynthesisUtterance
-                            const utterance = new SpeechSynthesisUtterance(text);
-                            // Définir la langue sur anglais
-                            utterance.lang = 'en-GB';
-            
-                            // Utiliser speechSynthesis pour prononcer le texte
-                            window.speechSynthesis.speak(utterance);
-                        } else {
-                            alert('Sorry, your browser does not support speech synthesis.');
-                        }
-                    }
-                   
-
+                  
+        
                     
         if (this.isReversed) {
             const text = array.find(card => parseInt(card.id) === parseInt(id)).ukName;
-            speak(text);
+            this.sounds.speak(text);
             document.querySelector(".word").textContent = array.find(card => parseInt(card.id) === parseInt(id)).frName;
             document.querySelector(".oldWord").textContent = array.find(card => parseInt(card.id) === parseInt(id)).ukName + "*";
 
         } else {
             const text = array.find(card => parseInt(card.id) === parseInt(id)).ukName;
-            speak(text);
+            this.sounds.speak(text);
             document.querySelector(".word").textContent = array.find(card => parseInt(card.id) === parseInt(id)).ukName;
             document.querySelector(".oldWord").textContent = array.find(card => parseInt(card.id) === parseInt(id)).frName + "*";
         }

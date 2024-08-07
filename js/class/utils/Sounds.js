@@ -6,17 +6,17 @@ export class Sounds extends ISounds {
     }
 
     success() {
-        const audio = new Audio();
-        audio.src = "assets/files/success_sound.wav";
-        audio.play();
+        // const audio = new Audio();
+        // audio.src = "assets/files/success_sound.wav";
+        // audio.play();
     }
 
     faill() {
-        const audio = new Audio();
-        const denis = "assets/files/denis_nedry.mp3";
-        const chewbacca = "assets/files/chewbacca.swf.mp3";
-        audio.src = denis;
-        audio.play();
+        // const audio = new Audio();
+        // const denis = "assets/files/denis_nedry.mp3";
+        // const chewbacca = "assets/files/chewbacca.swf.mp3";
+        // audio.src = denis;
+        // audio.play();
     }
 
     pass() {
@@ -26,5 +26,21 @@ export class Sounds extends ISounds {
         const audio = new Audio();
         audio.src = clacquement;
         audio.play();
+    }
+
+    speak(text) {
+
+        // Vérifier si le navigateur supporte l'API Web Speech
+        if ('speechSynthesis' in window) {
+            // Créer une instance de SpeechSynthesisUtterance
+            const utterance = new SpeechSynthesisUtterance(text);
+            // Définir la langue sur anglais
+            utterance.lang = 'en-GB';
+
+            // Utiliser speechSynthesis pour prononcer le texte
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Sorry, your browser does not support speech synthesis.');
+        }
     }
 }
