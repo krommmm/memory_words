@@ -13,12 +13,12 @@ export class Sounds extends ISounds {
     }
 
     faill() {
-        // const audio = new Audio();
-        // const denis = "assets/files/denis_nedry.mp3";
-        // const chewbacca = "assets/files/chewbacca.swf.mp3";
-        // audio.src = denis;
-        // audio.volume = 0.1; 
-        // audio.play();
+        const audio = new Audio();
+        const denis = "assets/files/denis_nedry.mp3";
+        const chewbacca = "assets/files/chewbacca.swf.mp3";
+        audio.src = denis;
+        audio.volume = 0.1; 
+        audio.play();
     }
 
     pass() {
