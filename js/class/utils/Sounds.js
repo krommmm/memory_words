@@ -6,17 +6,19 @@ export class Sounds extends ISounds {
     }
 
     success() {
-        // const audio = new Audio();
-        // audio.src = "assets/files/success_sound.wav";
-        // audio.play();
+        const audio = new Audio();
+        audio.src = "assets/files/success_sound.wav";
+        audio.volume = 0.1; 
+        audio.play();
     }
 
     faill() {
-        // const audio = new Audio();
-        // const denis = "assets/files/denis_nedry.mp3";
-        // const chewbacca = "assets/files/chewbacca.swf.mp3";
-        // audio.src = denis;
-        // audio.play();
+        const audio = new Audio();
+        const denis = "assets/files/denis_nedry.mp3";
+        const chewbacca = "assets/files/chewbacca.swf.mp3";
+        audio.src = denis;
+        audio.volume = 0.1; 
+        audio.play();
     }
 
     pass() {
@@ -25,6 +27,7 @@ export class Sounds extends ISounds {
         const clacquement = "https://universal-soundbank.com/sounds/2166.mp3";
         const audio = new Audio();
         audio.src = clacquement;
+        audio.volume = 0.1; 
         audio.play();
     }
 
