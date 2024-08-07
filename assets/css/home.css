@@ -210,7 +210,9 @@ h1 {
     margin-top: 22px;
     font-size: 12px;
 }
-
+.delete, .deleteWrong {
+    width: 30px;
+}
 @media screen and (max-width:735px) {
 
 
