@@ -55,9 +55,11 @@ export class Cards extends ICards {
         const cardContainer = document.querySelector(".cardsContainer");
 
         cardContainer.setAttribute("data-id", list[cpt].id);
+
         modalAnswerUI.open(".cardsContainer");
         if (isReversed) {
             document.querySelector(".word").textContent = list[cpt].ukName;
+           
         } else {
             document.querySelector(".word").textContent = list[cpt].frName;
         }
@@ -68,6 +70,7 @@ export class Cards extends ICards {
         modalAnswerUI.close(".modalAnswer");
         modalAnswerUI.close(".modalAnswerWrong");
         list = all ? list : wrongList;
+
 
         document.querySelector(".oldWord").textContent = "";
         if (list.length - 1 <= cpt) {
