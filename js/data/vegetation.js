@@ -58,8 +58,8 @@ export const vegetation = [
     { "id": 13506, "frName": "semencer", "ukName": "to seed" },
     { "id": 13507, "frName": "greffer", "ukName": "to graft" },
     { "id": 13508, "frName": "protéger", "ukName": "to protect" },
-    { "id": 13509, "frName": "observer", "ukName": "to observe" },
+    { "id": 13509, "frName": "bêcher", "ukName": "to dig" },
     { "id": 13510, "frName": "fleurir", "ukName": "to bloom" },
-    { "id": 13511, "frName": "bêcher", "ukName": "to till" },
+    { "id": 13511, "frName": "labourer", "ukName": "to till" },
 
 ];
