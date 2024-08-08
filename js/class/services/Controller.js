@@ -297,7 +297,7 @@ export class Controller {
         }
         btnOptions.forEach((btn)=>{
             const arrColor = randomRgbArray();
-            btn.style.backgroundColor=`rgba(${arrColor[0]},${arrColor[1]},${arrColor[2]},.5)`;
+            btn.style.backgroundColor=`rgba(${arrColor[0]},${arrColor[1]},${arrColor[2]},.1)`;
         })
     }
 
