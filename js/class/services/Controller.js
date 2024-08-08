@@ -57,6 +57,7 @@ export class Controller {
         this.currentList = this.list.list;
         this.currentWrongList = this.wrongList.wrongList;
         this.bindEvents();
+        this.colorHTML();
     }
 
     bindEvents() {
@@ -66,7 +67,8 @@ export class Controller {
 
     handleClicks(e) {
         const optionsModal = document.querySelector(".optionsModal");
-
+        const menu = document.querySelector(".menu");
+        menu.classList.contains("hidden") ? this.modalAnswerUI.open(".background") : this.modalAnswerUI.close(".background");
         if (e.target.classList.contains("bars") && optionsModal.classList.contains("hidden")) {
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".cardsContainer");
@@ -285,6 +287,19 @@ export class Controller {
         }
     }
 
+    colorHTML(){
+        const btnOptions = document.querySelectorAll(".btnOptions");
+        function randomRgbArray(){
+            const r = Math.round(Math.random()*(255)+0);
+            const g = Math.round(Math.random()*(255)+0);
+            const b = Math.round(Math.random()*(255)+0);
+            return [r,g,b];
+        }
+        btnOptions.forEach((btn)=>{
+            const arrColor = randomRgbArray();
+            btn.style.backgroundColor=`rgba(${arrColor[0]},${arrColor[1]},${arrColor[2]},.5)`;
+        })
+    }
 
     // const typeModal = document.querySelector(".typeModal").value;
     // const list = typeModal === "word" ? this.listWord.listWord : this.listPhrase.listPhrase;

@@ -39,8 +39,9 @@
     font-weight: 600;
     flex-direction: column;
 }
-.typeModal{
-    padding : 5px;
+
+.typeModal {
+    padding: 5px;
 }
 
 .word {
@@ -210,9 +211,29 @@ h1 {
     margin-top: 22px;
     font-size: 12px;
 }
-.delete, .deleteWrong {
+
+.delete,
+.deleteWrong {
     width: 30px;
 }
+
+@media screen and (min-width:736px) {
+    body .btnOptions {
+        width: 200px;
+    }
+
+    body .optionsModal__options {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body .optionsModal--title {
+        text-align: center;
+    }
+}
+
 @media screen and (max-width:735px) {
 
 
@@ -220,9 +241,15 @@ h1 {
     body .deleteWrong {
         width: 30px;
     }
-    body .CardHandle{
+
+    body .CardHandle {
         width: 85%;
         left: 7%;
+    }
+
+    body .menu {
+        width: auto;
+        justify-content: flex-start;
     }
 
     body .modalAnswer {

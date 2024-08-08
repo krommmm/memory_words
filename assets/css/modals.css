@@ -131,7 +131,7 @@
 
 .modal_SearchBar__title {
     margin: 15px;
-    font-weight:600;
+    font-weight: 600;
 }
 
 .modal_SearchBar input {
@@ -195,6 +195,11 @@
     padding: 10px;
     margin: 5px;
     cursor: pointer;
+    text-align: center;
+    background-color: rgba(160, 228, 92, 0.5);
+    font-weight: 600;
+    border: 1px solid black;
+    color: #3c3434;
 }
 
 .optionsModal .btn {
