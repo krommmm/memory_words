@@ -69,13 +69,14 @@ export class Controller {
         const optionsModal = document.querySelector(".optionsModal");
         const menu = document.querySelector(".menu");
         menu.classList.contains("hidden") ? this.modalAnswerUI.open(".background") : this.modalAnswerUI.close(".background");
-        if (e.target.classList.contains("bars") && optionsModal.classList.contains("hidden")) {
+
+        if ((e.target.classList.contains("bars") && optionsModal.classList.contains("hidden")) || (e.target.classList.contains("goMenu") && optionsModal.classList.contains("hidden"))) {
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".cardsContainer");
             this.modalAnswerUI.add(".menu");
             this.modalAnswerUI.remove(".optionsModal");
             this.closeAllMenuModals();
-        } else if (e.target.classList.contains("bars")) {
+        } else if ((e.target.classList.contains("bars")) || (e.target.classList.contains("goMenu"))){
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".cardsContainer");
             this.modalAnswerUI.toggle(".menu");
