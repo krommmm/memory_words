@@ -1,6 +1,7 @@
 .btn {
     padding: 9px;
-    background-color: purple;
+    background-color: #ee4e4e;
+    border: 1px solid black;
     color: white;
     font-weight: 600;
     cursor: pointer;
