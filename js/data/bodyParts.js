@@ -31,15 +31,12 @@ export const bodyParts = [
     { "id": 13649, "frName": "gorge", "ukName": "throat" },
     { "id": 13650, "frName": "poils", "ukName": "hair" },
     { "id": 13651, "frName": "peau", "ukName": "skin" },
-    { "id": 13652, "frName": "front", "ukName": "forehead" },
     { "id": 13653, "frName": "pomme d'Adam", "ukName": "Adam's apple" },
     { "id": 13654, "frName": "aisselle", "ukName": "armpit" },
     { "id": 13655, "frName": "fesse", "ukName": "buttock" },
     { "id": 13656, "frName": "talon d'Achille", "ukName": "Achilles heel" },
-    { "id": 13657, "frName": "cheveux", "ukName": "hair" },
     { "id": 13658, "frName": "barbe", "ukName": "beard" },
     { "id": 13659, "frName": "moustache", "ukName": "mustache" },
-    { "id": 13660, "frName": "pouce", "ukName": "thumb" },
     { "id": 13661, "frName": "ongle", "ukName": "nail" },
     { "id": 13662, "frName": "scalp", "ukName": "scalp" },
     { "id": 13663, "frName": "cils", "ukName": "eyelashes" },
@@ -49,4 +46,4 @@ export const bodyParts = [
     { "id": 13667, "frName": "tronc", "ukName": "torso" },
     { "id": 13668, "frName": "mollet", "ukName": "calf" },
     { "id": 13669, "frName": "hanche", "ukName": "hip" }
-];
+]
