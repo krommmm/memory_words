@@ -78,5 +78,4 @@ export const cinema = [
     { "id": 13597, "frName": "divulguer", "ukName": "to disclose" },
     { "id": 13598, "frName": "évaluer", "ukName": "to assess" },
     { "id": 13599, "frName": "souligner", "ukName": "to emphasize" },
-    { "id": 13600, "frName": "expliquer", "ukName": "to explain" }
 ];

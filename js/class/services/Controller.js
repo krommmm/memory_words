@@ -24,6 +24,9 @@ import { travel } from "../../data/travel.js";
 import { arts } from "../../data/arts.js";
 import { entertainment } from "../../data/entertainment.js";
 import { cinema } from "../../data/cinema.js";
+import { internalBodyParts } from "../../data/internalBodyParts.js";
+import { tools } from "../../data/tools.js";
+import { travelTerms } from "../../data/travelTerms.js";
 
 export class Controller {
     constructor(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds, cards, cardsUI) {
@@ -50,7 +53,7 @@ export class Controller {
         this.shuffle = false;
 
         // all libraries
-        this.allLibraries = [...this.list.list, ...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city, ...orientation, ...connectives, ...vegetation, ...work, ...bodyParts, ...weather, ...emotions, ...education, ...travel, ...arts, ...entertainment, ...cinema];
+        this.allLibraries = [...this.list.list, ...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city, ...orientation, ...connectives, ...vegetation, ...work, ...bodyParts, ...weather, ...emotions, ...education, ...travel, ...arts, ...entertainment, ...cinema, ...internalBodyParts, ...tools, ...travelTerms];
     }
 
     init() {
@@ -73,7 +76,7 @@ export class Controller {
         if ((e.target.classList.contains("bars") && optionsModal.classList.contains("hidden")) || (e.target.classList.contains("goMenu") && optionsModal.classList.contains("hidden"))) {
             this.modalUI.close(".modal");
             this.modalAnswerUI.close(".cardsContainer");
-            this.modalAnswerUI.add(".menu");
+            this.modalAnswerUI.add(".menu"); 
             this.modalAnswerUI.remove(".optionsModal");
             this.closeAllMenuModals();
         } else if ((e.target.classList.contains("bars")) || (e.target.classList.contains("goMenu"))){
@@ -210,6 +213,15 @@ export class Controller {
         }
         else if (e.target.classList.contains("cinema")) {
             this.playLibrary(cinema);
+        }
+        else if(e.target.classList.contains("internalBodyParts")){
+            this.playLibrary(internalBodyParts);
+        }
+        else if(e.target.classList.contains("tools")){
+            this.playLibrary(tools);
+        }
+        else if(e.target.classList.contains("travelTerms")){
+            this.playLibrary(travelTerms);
         }
 
         // options
