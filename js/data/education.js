@@ -9,7 +9,7 @@ export const education = [
     { "id": 13807, "frName": "cours", "ukName": "course" },
     { "id": 13808, "frName": "diplôme", "ukName": "diploma/degree" },
     { "id": 13809, "frName": "examen", "ukName": "exam" },
-    { "id": 13810, "frName": "devoir", "ukName": "assignment" },
+    { "id": 13810, "frName": "devoir/devoir maison", "ukName": "assignment/homework" },
     { "id": 13811, "frName": "lecture", "ukName": "lecture" },
     { "id": 13812, "frName": "étude", "ukName": "study" },
     { "id": 13813, "frName": "recherche", "ukName": "research" },
