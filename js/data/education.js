@@ -64,7 +64,7 @@ export const education = [
     { "id": 13863, "frName": "développer", "ukName": "to develop" },
     { "id": 13864, "frName": "évaluer(quick/complete)", "ukName": "to assess/to evaluate" },
     { "id": 13865, "frName": "s'informer", "ukName": "to inform oneself" },
-    { "id": 13866, "frName": "réaliser", "ukName": "to carry out" },
+    { "id": 13866, "frName": "réaliser un travail", "ukName": "to carry out" },
     { "id": 13867, "frName": "former", "ukName": "to train" },
     { "id": 13868, "frName": "faire un exposé", "ukName": "to give a presentation" },
     { "id": 13869, "frName": "appliquer", "ukName": "to apply" },
