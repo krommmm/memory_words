@@ -42,7 +42,7 @@ export const irregularVerbs = [
     { "id": 11090, "frName": "prêter", "ukName": "lend/lent/lent" },
     { "id": 11091, "frName": "laisser", "ukName": "let/let/let" },
     { "id": 11092, "frName": "perdre", "ukName": "lose/lost/lost" },
-    { "id": 11093, "frName": "faire", "ukName": "make/made/made" },
+    { "id": 11093, "frName": "fabriquer", "ukName": "make/made/made" },
     { "id": 11094, "frName": "signifier", "ukName": "mean/meant/meant" },
     { "id": 11095, "frName": "rencontrer", "ukName": "meet/met/met" },
     { "id": 11096, "frName": "payer", "ukName": "pay/paid/paid" },
