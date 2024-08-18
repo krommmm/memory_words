@@ -27,7 +27,6 @@ export const emotions = [
     { "id": 13776, "frName": "compassion", "ukName": "compassion" },
     { "id": 13777, "frName": "admiration", "ukName": "admiration" },
     { "id": 13778, "frName": "rancœur", "ukName": "resentment" },
-    { "id": 13779, "frName": "esquisse", "ukName": "sketch" },
     { "id": 13780, "frName": "vulnérabilité", "ukName": "vulnerability" },
     { "id": 13781, "frName": "détresse", "ukName": "distress" },
     { "id": 13782, "frName": "soulagement", "ukName": "relief" },
