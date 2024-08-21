@@ -45,14 +45,13 @@ export const tools = [
     { "id": 13663, "frName": "masque de protection", "ukName": "safety mask" },
     { "id": 13664, "frName": "lunettes de protection", "ukName": "safety glasses" },
     { "id": 13665, "frName": "caisse à outils", "ukName": "tool case" },
-    { "id": 13666, "frName": "système d'ancrage", "ukName": "anchoring system" },
     { "id": 13667, "frName": "brosse", "ukName": "brush" },
     { "id": 13668, "frName": "manchon", "ukName": "sleeve" },
     { "id": 13669, "frName": "cutter rotatif", "ukName": "rotary cutter" },
     { "id": 13670, "frName": "colle", "ukName": "glue" },
     { "id": 13671, "frName": "bande adhésive", "ukName": "adhesive tape" },
-    { "id": 13672, "frName": "scie à chantournée", "ukName": "scroll saw" },
-    { "id": 13673, "frName": "tasseau", "ukName": "batten" },
+    { "id": 13673, "frName": "planche", "ukName": "board/wooden board" },
     { "id": 13674, "frName": "tronçonneuse", "ukName": "chainsaw" },
-    { "id": 13675, "frName": "fil à plomb", "ukName": "plumb line" }
+    { "id": 13666, "frName": "du file", "ukName": "thread" },
+    { "id": 13672, "frName": "du file metalique(electrique)", "ukName": "wire" },
 ];
