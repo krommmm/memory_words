@@ -77,7 +77,7 @@ export const irregularVerbs = [
     { "id": 11125, "frName": "prendre", "ukName": "take/took/taken" },
     { "id": 11126, "frName": "enseigner", "ukName": "teach/taught/taught" },
     { "id": 11127, "frName": "déchirer", "ukName": "tear/tore/torn" },
-    { "id": 11128, "frName": "dire", "ukName": "tell/told/told" },
+    { "id": 11128, "frName": "raconter", "ukName": "tell/told/told" },
     { "id": 11129, "frName": "penser", "ukName": "think/thought/thought" },
     { "id": 11130, "frName": "jeter", "ukName": "throw/threw/thrown" },
     { "id": 11131, "frName": "comprendre", "ukName": "understand/understood/understood" },
