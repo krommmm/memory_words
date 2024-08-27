@@ -101,7 +101,7 @@ export class Controller {
                 this.cards.initCards(this.currentList, currentWrongList, progressBar, cpt, progressBarUI, modalAnswerUI, all, isReversed);
             } else {
                 this.cards.addCardInWrongList(e, this.list.list, this.allLibraries, this.wrongList, this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
-
+                this.cpt = this.cards.continues(this.currentList, this.currentWrongList, this.progressBar, this.cpt, this.progressBarUI, this.modalAnswerUI, this.all, this.wrong, this.isReversed);
             }
             this.currentWrongList = JSON.parse(localStorage.getItem("wrongWords"));
 
@@ -424,10 +424,7 @@ export class Controller {
     translate(e, array) {
         document.querySelector(".cardsContainer").classList.remove("rightToLeft");
         let id = e.target.closest(".cardsContainer").dataset.id;
-
-                  
-        
-                    
+       
         if (this.isReversed) {
             const text = array.find(card => parseInt(card.id) === parseInt(id)).ukName;
             this.sounds.speak(text);
