@@ -28,6 +28,7 @@ import { internalBodyParts } from "../../data/internalBodyParts.js";
 import { tools } from "../../data/tools.js";
 import { travelTerms } from "../../data/travelTerms.js";
 import { voc1 } from "../../data/voc1.js";
+import { voc2 } from "../../data/voc2.js";
 
 export class Controller {
     constructor(modalUI, list, wrongList, modalAnswerUI, progressBar, progressBarUI, sounds, cards, cardsUI) {
@@ -54,7 +55,7 @@ export class Controller {
         this.shuffle = false;
 
         // all libraries
-        this.allLibraries = [...this.list.list, ...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city, ...orientation, ...connectives, ...vegetation, ...work, ...bodyParts, ...weather, ...emotions, ...education, ...travel, ...arts, ...entertainment, ...cinema, ...internalBodyParts, ...tools, ...travelTerms, ...voc1];
+        this.allLibraries = [...this.list.list, ...irregularVerbs, ...times, ...animals, ...bedroom, ...clothing, ...kitchen, ...food, ...fruit, ...house, ...sport, ...transport, ...vegetable, ...places, ...city, ...orientation, ...connectives, ...vegetation, ...work, ...bodyParts, ...weather, ...emotions, ...education, ...travel, ...arts, ...entertainment, ...cinema, ...internalBodyParts, ...tools, ...travelTerms, ...voc1, ...voc2];
     }
 
     init() {
@@ -226,6 +227,9 @@ export class Controller {
         }
         else if(e.target.classList.contains("voc1")){
             this.playLibrary(voc1);
+        }
+        else if(e.target.classList.contains("voc2")){
+            this.playLibrary(voc2);
         }
 
         // options
